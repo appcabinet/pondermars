@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon';
 import Image from 'next/image';
+import Subheader from '../structure/subheader';
 
 interface FeaturedNoteProps {
   imageSrc: string;
@@ -29,10 +30,10 @@ export function FeaturedNote({
       </div>
       
       <div className="flex flex-col gap-2 flex-1 min-w-0">
-        <h3 className="text-lg font-semibold leading-tight">
+        <Subheader>
           {title}
-        </h3>
-        
+        </Subheader>
+
         <div className="text-base text-muted-foreground opacity-70">
           {date.toLocaleString(DateTime.DATE_MED)} • {duration}
         </div>
