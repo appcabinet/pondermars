@@ -33,6 +33,7 @@ export default function Home() {
         date={DateTime.now()}
       />
       <Divider />
+      <Divider />
     </Main>
   );
 }
