@@ -12,37 +12,36 @@ export default function Home() {
         <Link href="/" className="text-lg font-medium text-muted-foreground">
           ponder mars
         </Link>
-        <div className="flex items-center gap-4 text-base">
+        <div className="flex items-center gap-4 text-lg">
           <Link
             href="/"
-            className="hover:text-accent-foreground opacity-70 md:opacity-100"
+            className="hover:text-accent-foreground opacity-70 hover:opacity-100"
           >
             music
           </Link>
           <Link
             href="/"
-            className="hover:text-accent-foreground opacity-70 md:opacity-100"
+            className="hover:text-accent-foreground opacity-70 hover:opacity-100"
           >
             writing
           </Link>
           <Link
             href="/"
-            className="hover:text-accent-foreground opacity-70 md:opacity-100"
+            className="hover:text-accent-foreground opacity-70 hover:opacity-100"
           >
             reading
           </Link>
           <Link
             href="/"
-            className="hover:text-accent-foreground opacity-70 md:opacity-100"
+            className="hover:text-accent-foreground opacity-70 hover:opacity-100"
           >
             story
           </Link>
         </div>
       </div>
       <div>
-        <p>
-          Software engineer, designer, and creative writer. Founder & CTO of
-          Maxed.
+        <p className="text-lg">
+          Software engineer, designer, and creative writer. Passionate about crafting digital experiences others love. Currently the founder & CTO of Maxed.
         </p>
       </div>
       <Divider />

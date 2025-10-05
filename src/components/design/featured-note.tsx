@@ -25,20 +25,20 @@ export function FeaturedNote({
           alt={title}
           width={128}
           height={128}
-          className="w-12 h-12 md:w-30 md:h-30 object-cover"
+          className="w-12 h-12 md:w-[112px] md:h-[112px] object-cover"
         />
       </div>
       
-      <div className="flex flex-col gap-2 flex-1 min-w-0">
+      <div className="flex flex-col gap-1 flex-1 min-w-0">
         <Subheader>
           {title}
         </Subheader>
 
-        <div className="text-base text-muted-foreground opacity-70">
+        <div className="text-lg text-muted-foreground opacity-70">
           {date.toLocaleString(DateTime.DATE_MED)} • {duration}
         </div>
         
-        <p className="text-base text-muted-foreground">
+        <p className="text-lg text-muted-foreground">
           {subtitle}
         </p>
       </div>
