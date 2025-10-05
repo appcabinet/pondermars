@@ -3,11 +3,11 @@ import Link from "next/link";
 import { FeaturedNote } from "@/components/design/featured-note";
 import ArticleList from "@/components/structure/article-list";
 import Divider from "@/components/structure/divider";
-import Main from "@/components/structure/main";
+import MainLayout from "@/components/structure/main-layout";
 
 export default function Home() {
   return (
-    <Main>
+    <MainLayout>
       <div className="flex-col md:flex-row flex justify-between items-start md:items-center gap-4">
         <Link href="/" className="text-lg font-medium text-muted-foreground">
           ponder mars
@@ -56,6 +56,6 @@ export default function Home() {
       <Divider />
       <ArticleList />
       <Divider />
-    </Main>
+    </MainLayout>
   );
 }
