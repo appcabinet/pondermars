@@ -21,13 +21,10 @@ export async function getNote(fileName: string) {
   const { content, frontmatter } = await compileMDX<Note>({
     source: fileContent,
     options: {
-      mdxOptions: {
-        remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter]
-      },
       parseFrontmatter: true,
     }
   });
-  return { content, frontmatter };
+  return { content, frontmatter, fileName };
 
 }
 
