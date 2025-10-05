@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${sourceSans3.variable} antialiased`}
+        className={`${sourceSans3.className} antialiased`}
       >
         {children}
       </body>
