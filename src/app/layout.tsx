@@ -10,6 +10,9 @@ const sourceSans3 = Source_Sans_3({
 export const metadata: Metadata = {
   title: "Ponder Mars",
   description: "Notes, articles, and essays",
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
 export default function RootLayout({
