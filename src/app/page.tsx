@@ -12,7 +12,7 @@ export default function Home() {
         <Link href="/" className="text-lg font-medium text-muted-foreground">
           ponder mars
         </Link>
-        <div className="flex items-center gap-4 text-lg">
+        <div className="flex items-center gap-4 text-lg hidden">
           <Link
             href="/"
             className="hover:text-accent-foreground opacity-70 hover:opacity-100"
