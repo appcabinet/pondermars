@@ -1,9 +1,12 @@
+"use client";
+
 import { DateTime } from "luxon";
 import Link from "next/link";
 import { FeaturedNote } from "@/components/design/featured-note";
 import ArticleList from "@/components/structure/article-list";
 import Divider from "@/components/structure/divider";
 import MainLayout from "@/components/structure/main-layout";
+import NewsletterSubscribe from "@/components/structure/newsletter-subscribe";
 
 export default function Home() {
   return (
@@ -55,6 +58,7 @@ export default function Home() {
       <Divider />
       <ArticleList />
       <Divider />
+      <NewsletterSubscribe />
     </MainLayout>
   );
 }

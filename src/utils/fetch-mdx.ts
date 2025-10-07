@@ -1,8 +1,8 @@
+'use server';
+
 import fs from "fs";
 import { compileMDX } from "next-mdx-remote/rsc";
 import path from "path";
-import remarkFrontmatter from "remark-frontmatter";
-import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
 const contentDir = path.join(process.cwd(), "src", "notes");
 
