@@ -24,7 +24,7 @@ export default async function ArticleList() {
   return (
     <div className="flex flex-col gap-8">
       <Subheader>Writing</Subheader>
-      <table className="w-full border-separate border-spacing-y-0.5 table-fixed">
+      <table className="w-full border-separate border-spacing-y-1 sm:border-spacing-y-2 table-fixed">
         <tbody>
           {sortedNotes.map((note) => (
             <tr key={note.frontmatter.title}>
@@ -37,12 +37,14 @@ export default async function ArticleList() {
                 {note.frontmatter.published}
               </td>
               <td className="text-lg hover:text-accent-foreground w-full">
-                <span className="sm:hidden">-</span>
-                <Link href={`/${note.fileName}`} className="block w-full">{note.frontmatter.title}</Link>
+                <div className="flex items-center gap-0 min-w-0">
+                  <span className="sm:hidden pr-4 opacity-70 flex-shrink-0">•</span>
+                  <Link href={`/${note.fileName}`} className="truncate">{note.frontmatter.title}</Link>
+                </div>
               </td>
               <td
                 className={cn(
-                  "text-right text-muted-foreground opacity-70 text-[15px] w-[80px]",
+                  "text-right text-muted-foreground opacity-70 text-[15px] sm:w-[80px] w-[40px]",
                   geistMono.className,
                 )}
               >

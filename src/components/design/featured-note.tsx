@@ -34,7 +34,7 @@ export function FeaturedNote({
           {title}
         </Subheader>
 
-        <div className="text-lg text-muted-foreground opacity-70">
+        <div className="text-[17px] text-muted-foreground opacity-70">
           {date.toLocaleString(DateTime.DATE_MED)} • {duration}
         </div>
         

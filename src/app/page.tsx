@@ -15,21 +15,15 @@ export default async function Home() {
   return (
     <MainLayout>
       <div className="flex-col md:flex-row flex justify-between items-start md:items-center gap-4">
-        <Link href="/" className="text-lg font-medium text-muted-foreground">
-          ponder mars
+        <Link href="/" className="text-lg font-semibold text-muted-foreground">
+          Marcelo Mantilla
         </Link>
-        <div className="flex items-center gap-4 text-lg">
+        <div className="flex items-center gap-4 text-lg hidden">
           <Link
             href="/"
             className="hover:text-accent-foreground opacity-70 hover:opacity-100"
           >
             music
-          </Link>
-          <Link
-            href="/"
-            className="hover:text-accent-foreground opacity-70 hover:opacity-100"
-          >
-            writing
           </Link>
           <Link
             href="/"
