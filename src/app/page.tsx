@@ -1,5 +1,3 @@
-"use client";
-
 import { DateTime } from "luxon";
 import Link from "next/link";
 import { FeaturedNote } from "@/components/design/featured-note";
@@ -7,15 +5,20 @@ import ArticleList from "@/components/structure/article-list";
 import Divider from "@/components/structure/divider";
 import MainLayout from "@/components/structure/main-layout";
 import NewsletterSubscribe from "@/components/structure/newsletter-subscribe";
+import { getNotes } from "@/utils/fetch-mdx";
 
-export default function Home() {
+export default async function Home() {
+  const notes = await getNotes();
+  const latestNote = notes.sort((a, b) =>
+    new Date(b.frontmatter.published).getTime() - new Date(a.frontmatter.published).getTime()
+  )[0];
   return (
     <MainLayout>
       <div className="flex-col md:flex-row flex justify-between items-start md:items-center gap-4">
         <Link href="/" className="text-lg font-medium text-muted-foreground">
           ponder mars
         </Link>
-        <div className="flex items-center gap-4 text-lg hidden">
+        <div className="flex items-center gap-4 text-lg">
           <Link
             href="/"
             className="hover:text-accent-foreground opacity-70 hover:opacity-100"
@@ -50,10 +53,10 @@ export default function Home() {
       <Divider />
       <FeaturedNote
         imageSrc="/favicon.png"
-        title="Featured Note"
-        subtitle="This is a featured note"
-        duration="10 minutes"
-        date={DateTime.now()}
+        title={latestNote.frontmatter.title}
+        subtitle={latestNote.frontmatter.description}
+        duration={latestNote.frontmatter.readingTime}
+        date={DateTime.fromISO(latestNote.frontmatter.published)}
       />
       <Divider />
       <ArticleList />

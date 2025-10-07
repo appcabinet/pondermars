@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { subscribeToNewsletter } from "@/app/actions/resend";
 import { Input } from "@/components/ui/input";
@@ -31,13 +32,29 @@ export default function NewsletterSubscribe() {
   }
 
   return (
-    <div className="flex flex-col gap-4">
-      <Subheader>Get updates from me</Subheader>
-      <p className="text-lg">Get an email every time I release a new article.</p>
+    <div className="flex flex-col gap-6">
+      <Subheader>Get Updates From Me</Subheader>
+      <p className="text-lg pb-1">
+        Get an email every time I release a new article. You can also find me on&nbsp;
+        <Link href="https://github.com/pondermars" className="text-accent-foreground">
+          GitHub
+        </Link>
+        ,&nbsp;
+        <Link href="https://x.com/pondermars" className="text-accent-foreground">
+          Twitter
+        </Link>
+        , and
+        <Link
+          href="https://instagram.com/_marcelo.app"
+          className="text-accent-foreground"
+        >
+          {" "}
+          Instagram
+        </Link>
+        .
+      </p>
       {isSuccess ? (
-        <p className="text-lg text-muted-foreground">
-          Thanks for subscribing!
-        </p>
+        <p className="text-lg text-muted-foreground">Thanks for subscribing!</p>
       ) : (
         <form onSubmit={handleSubmit} className="flex gap-2">
           <Input
@@ -47,7 +64,7 @@ export default function NewsletterSubscribe() {
             onChange={(e) => setEmail(e.target.value)}
             disabled={isSubmitting}
             required
-            className="flex-1"
+            className="w-[280px]"
           />
           <button
             type="submit"
@@ -58,10 +75,7 @@ export default function NewsletterSubscribe() {
           </button>
         </form>
       )}
-      {error && (
-        <p className="text-sm text-destructive">{error}</p>
-      )}
+      {error && <p className="text-sm text-destructive">{error}</p>}
     </div>
   );
 }
-

@@ -23,9 +23,9 @@ export function FeaturedNote({
         <Image
           src={imageSrc}
           alt={title}
-          width={128}
-          height={128}
-          className="w-12 h-12 md:w-[112px] md:h-[112px] object-cover"
+          width={120}
+          height={120}
+          className="w-12 h-12 md:w-[100px] md:h-[100px] object-cover"
         />
       </div>
       
