@@ -32,10 +32,10 @@ export default function NewsletterSubscribe() {
   }
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-8">
       <Subheader>Get Updates From Me</Subheader>
       <p className="text-lg pb-1">
-        Get an email every time I release a new article. You can also find me on&nbsp;
+        Get a short email every time I release a new article. You can also find me on&nbsp;
         <Link href="https://github.com/pondermars" className="text-accent-foreground">
           GitHub
         </Link>
