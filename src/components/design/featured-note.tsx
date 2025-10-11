@@ -4,7 +4,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import type { NoteData } from "@/utils/fetch-mdx";
 import { monoFont } from "@/utils/fonts";
-import Subheader from "../structure/subheader";
+import Header from "../structure/header";
 
 interface FeaturedNoteProps {
   noteData: NoteData;
@@ -30,9 +30,9 @@ export function FeaturedNote({ noteData }: FeaturedNoteProps) {
       )}
 
       <div className="flex flex-col gap-2 flex-1 min-w-0">
-        <Subheader className="group-hover:text-accent-foreground">
+        <Header className="group-hover:text-accent-foreground">
           {frontmatter.title}
-        </Subheader>
+        </Header>
 
         <div
           className={cn(

@@ -17,14 +17,14 @@ export default async function NotePage({
 
   return (
     <main className="p-6">
-      <div className="h-[33vh] w-full bg-red-500 rounded-t-xl overflow-hidden">
+      {/* <div className="h-[33vh] w-full bg-red-500 rounded-t-xl overflow-hidden">
         <Image
           src={"/blue-background.webp"}
           width={10000}
           height={1000}
           alt="Blue background"
         />
-      </div>
+      </div> */}
       <div className="w-full mx-auto md:max-w-5xl">
         <div className="text-lg pt-8">
           <Link href="/" className="hover:text-accent-foreground">

@@ -2,9 +2,9 @@ import Link from "next/link";
 import { FeaturedNote } from "@/components/design/featured-note";
 import ArticleList from "@/components/structure/article-list";
 import Divider from "@/components/structure/divider";
+import Header from "@/components/structure/header";
 import MainLayout from "@/components/structure/main-layout";
 import NewsletterSubscribe from "@/components/structure/newsletter-subscribe";
-import Subheader from "@/components/structure/subheader";
 import { cn } from "@/lib/utils";
 import { getNotes } from "@/utils/fetch-mdx";
 
@@ -21,7 +21,7 @@ export default async function Home() {
     <MainLayout>
       <div className="flex-col md:flex-row flex justify-between items-start md:items-center gap-4">
         <Link href="/" className="">
-          <Subheader>Marcelo Mantilla</Subheader>
+          <Header>Marcelo Mantilla</Header>
         </Link>
       </div>
       <div>

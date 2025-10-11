@@ -2,7 +2,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import type { NoteData } from "@/utils/fetch-mdx";
 import { monoFont } from "@/utils/fonts";
-import Subheader from "./subheader";
+import Header from "./header";
 
 function formatReadingTime(readingTime: string | undefined): string {
   if (!readingTime) return "";
@@ -12,7 +12,7 @@ function formatReadingTime(readingTime: string | undefined): string {
 export default async function ArticleList({ notes }: { notes: NoteData[] }) {
   return (
     <div className="flex flex-col gap-8">
-      <Subheader>Writing</Subheader>
+      <Header>Writing</Header>
       <table className="w-full border-separate border-spacing-y-0.5 sm:border-spacing-y-1 table-fixed">
         <tbody>
           {notes.map((note) => (

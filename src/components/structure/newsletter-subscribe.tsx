@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { subscribeToNewsletter } from "@/app/actions/resend";
 import { Input } from "@/components/ui/input";
-import Subheader from "./subheader";
+import Header from "./header";
 
 export default function NewsletterSubscribe() {
   const [email, setEmail] = useState("");
@@ -33,7 +33,7 @@ export default function NewsletterSubscribe() {
 
   return (
     <div className="flex flex-col gap-8">
-      <Subheader>Get Updates From Me</Subheader>
+      <Header>Get Updates From Me</Header>
       <p className="text-lg pb-1">
         Get a short email every time I release a new article. You can also find me on&nbsp;
         <Link href="https://github.com/pondermars" className="text-accent-foreground">
