@@ -13,13 +13,13 @@ export default async function ArticleList({ notes }: { notes: NoteData[] }) {
   return (
     <div className="flex flex-col gap-8">
       <Subheader>Writing</Subheader>
-      <table className="w-full border-separate border-spacing-y-1 sm:border-spacing-y-2 table-fixed">
+      <table className="w-full border-separate border-spacing-y-0.5 sm:border-spacing-y-1 table-fixed">
         <tbody>
           {notes.map((note) => (
             <tr key={note.frontmatter.title}>
               <td
                 className={cn(
-                  "hidden sm:table-cell text-muted-foreground opacity-70 sm:w-[120px]",
+                  "hidden sm:table-cell text-muted-foreground opacity-70 sm:w-[120px] text-lg",
                   monoFont.className,
                 )}
               >
@@ -37,7 +37,7 @@ export default async function ArticleList({ notes }: { notes: NoteData[] }) {
               </td>
               <td
                 className={cn(
-                  "text-right text-muted-foreground opacity-70 text-[15px] sm:w-[80px] w-[40px]",
+                  "text-right text-muted-foreground opacity-70 text-lg sm:w-[80px] w-[40px]",
                   monoFont.className,
                 )}
               >

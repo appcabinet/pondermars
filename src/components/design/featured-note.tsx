@@ -14,7 +14,7 @@ export function FeaturedNote({ noteData }: FeaturedNoteProps) {
   const url = frontmatter.redirectUrl || `/${noteData.fileName}`;
 
   return (
-    <Link href={url} className="group w-full flex gap-4 md:gap-6">
+    <Link href={url} className="group w-full">
       {frontmatter.coverImage && (
         <div className="flex-shrink-0">
           <Image
@@ -27,7 +27,7 @@ export function FeaturedNote({ noteData }: FeaturedNoteProps) {
         </div>
       )}
 
-      <div className="flex flex-col gap-1 flex-1 min-w-0">
+      <div className="flex flex-col gap-2 flex-1 min-w-0">
         <Subheader className="group-hover:text-accent-foreground">{frontmatter.title}</Subheader>
 
         <div className="text-lg text-muted-foreground opacity-70">

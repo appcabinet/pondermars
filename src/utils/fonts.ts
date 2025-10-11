@@ -44,5 +44,5 @@ const inconsolataFont = Inconsolata({
 
 export const titleFont = inconsolataFont;
 export const bodyFont = sourceSansFont;
-export const monoFont = geistMonoFont;
+export const monoFont = inconsolataFont;
 export const testFont = gelasioFont;

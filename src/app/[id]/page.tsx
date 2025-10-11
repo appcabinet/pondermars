@@ -1,6 +1,8 @@
 import { DateTime } from "luxon";
 import Image from "next/image";
 import Link from "next/link";
+import Divider from "@/components/structure/divider";
+import NewsletterSubscribe from "@/components/structure/newsletter-subscribe";
 import { cn } from "@/lib/utils";
 import { getNote } from "@/utils/fetch-mdx";
 import { titleFont } from "@/utils/fonts";
@@ -38,19 +40,26 @@ export default async function NotePage({
         <div className="flex flex-col gap-1 mt-[144px] mb-[92px] mb-24">
           <h1
             className={cn(
-              "text-[32px] text-5xl font-semibold",
+              "text-[32px] text-5xl font-medium",
               titleFont.className,
             )}
           >
             {frontmatter.title}
           </h1>
-          <p className="text-lg">
+          <p className="text-lg opacity-70">
             {DateTime.fromISO(frontmatter.published).toLocaleString(
               DateTime.DATE_MED,
             )}
           </p>
         </div>
         <article className="w-full md:max-w-2xl prose-lg">{content}</article>
+        <div className="flex flex-col gap-12">
+          <div />
+          <Divider />
+          <NewsletterSubscribe />
+          <div />
+          <div />
+        </div>
       </div>
     </main>
   );

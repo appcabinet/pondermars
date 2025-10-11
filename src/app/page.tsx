@@ -19,7 +19,7 @@ export default async function Home() {
   return (
     <MainLayout>
       <div className="flex-col md:flex-row flex justify-between items-start md:items-center gap-4">
-        <Link href="/" className="text-lg font-semibold text-muted-foreground">
+        <Link href="/" className="text-xl font-semibold text-muted-foreground">
           Marcelo Mantilla
         </Link>
         <div className="flex items-center gap-4 text-lg">
@@ -50,6 +50,7 @@ export default async function Home() {
       <ArticleList notes={remainingNotes} />
       <Divider />
       <NewsletterSubscribe />
+      <div />
     </MainLayout>
   );
 }
