@@ -1,4 +1,3 @@
-import { DateTime } from "luxon";
 import Link from "next/link";
 import { FeaturedNote } from "@/components/design/featured-note";
 import ArticleList from "@/components/structure/article-list";
@@ -12,6 +11,7 @@ export default async function Home() {
   const latestNote = notes.sort((a, b) =>
     new Date(b.frontmatter.published).getTime() - new Date(a.frontmatter.published).getTime()
   )[0];
+
   return (
     <MainLayout>
       <div className="flex-col md:flex-row flex justify-between items-start md:items-center gap-4">
@@ -45,13 +45,7 @@ export default async function Home() {
         </p>
       </div>
       <Divider />
-      <FeaturedNote
-        imageSrc="/favicon.png"
-        title={latestNote.frontmatter.title}
-        subtitle={latestNote.frontmatter.description}
-        duration={latestNote.frontmatter.readingTime}
-        date={DateTime.fromISO(latestNote.frontmatter.published)}
-      />
+      <FeaturedNote note={latestNote.frontmatter} />
       <Divider />
       <ArticleList />
       <Divider />

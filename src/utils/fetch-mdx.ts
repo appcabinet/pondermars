@@ -13,6 +13,8 @@ export type Note = {
   updated: string;
   readingTime: string;
   tags: string[];
+  coverImage?: string;
+  redirectUrl?: string;
 }
 
 export async function getNote(fileName: string) {
