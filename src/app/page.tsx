@@ -12,11 +12,13 @@ const testFont = Instrument_Serif({ subsets: ["latin"], weight: ["400"] });
 
 export default async function Home() {
   const notes = await getNotes();
-  const latestNote = notes.sort(
+  const sortedNotes = notes.toSorted(
     (a, b) =>
       new Date(b.frontmatter.published).getTime() -
       new Date(a.frontmatter.published).getTime(),
-  )[0];
+  );
+  const [latestNote, ...remainingNotes] = sortedNotes;
+  const latestNoteUrl = latestNote.frontmatter.redirectUrl || `/${latestNote.fileName}`;
 
   return (
     <MainLayout>
@@ -24,24 +26,18 @@ export default async function Home() {
         <Link href="/" className="text-lg font-semibold text-muted-foreground">
           Marcelo Mantilla
         </Link>
-        <div className="flex items-center gap-4 text-lg hidden">
+        <div className="flex items-center gap-4 text-lg">
           <Link
             href="/"
             className="hover:text-accent-foreground opacity-70 hover:opacity-100"
           >
-            music
+            audio
           </Link>
           <Link
             href="/"
             className="hover:text-accent-foreground opacity-70 hover:opacity-100"
           >
-            reading
-          </Link>
-          <Link
-            href="/"
-            className="hover:text-accent-foreground opacity-70 hover:opacity-100"
-          >
-            story
+            about
           </Link>
         </div>
       </div>
@@ -53,9 +49,9 @@ export default async function Home() {
         </p>
       </div>
       <Divider />
-      <FeaturedNote note={latestNote.frontmatter} />
+      <FeaturedNote note={latestNote.frontmatter} url={latestNoteUrl} />
       <Divider />
-      <ArticleList />
+      <ArticleList notes={remainingNotes} />
       <Divider />
       <NewsletterSubscribe />
     </MainLayout>

@@ -37,7 +37,9 @@ export async function getNote(fileName: string) {
 
 }
 
-export async function getNotes() {
+export type NoteData = Awaited<ReturnType<typeof getNote>>;
+
+export async function getNotes(): Promise<NoteData[]> {
   const notes = fs.readdirSync(contentDir);
   const notesData = await Promise.all(notes.map(getNote));
   return notesData;

@@ -1,7 +1,7 @@
 import { Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { getNotes } from "@/utils/fetch-mdx";
+import type { NoteData } from "@/utils/fetch-mdx";
 import Subheader from "./subheader";
 
 const geistMono = Geist_Mono({ subsets: ["latin"] });
@@ -11,22 +11,13 @@ function formatReadingTime(readingTime: string | undefined): string {
   return readingTime.replaceAll(" ", "").replace("min", "m");
 }
 
-export default async function ArticleList() {
-  const notes = await getNotes();
-
-  const sortedNotes = notes.sort((a, b) => {
-    return (
-      new Date(b.frontmatter.published).getTime() -
-      new Date(a.frontmatter.published).getTime()
-    );
-  });
-
+export default async function ArticleList({ notes }: { notes: NoteData[] }) {
   return (
     <div className="flex flex-col gap-8">
       <Subheader>Writing</Subheader>
       <table className="w-full border-separate border-spacing-y-1 sm:border-spacing-y-2 table-fixed">
         <tbody>
-          {sortedNotes.map((note) => (
+          {notes.map((note) => (
             <tr key={note.frontmatter.title}>
               <td
                 className={cn(
