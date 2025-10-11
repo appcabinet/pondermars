@@ -34,7 +34,6 @@ export async function getNote(fileName: string) {
   const validatedFrontmatter = NoteSchema.parse(frontmatter);
 
   return { content, frontmatter: validatedFrontmatter, fileName };
-
 }
 
 export type NoteData = Awaited<ReturnType<typeof getNote>>;

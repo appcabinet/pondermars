@@ -7,8 +7,7 @@ import MainLayout from "@/components/structure/main-layout";
 import NewsletterSubscribe from "@/components/structure/newsletter-subscribe";
 import { cn } from "@/lib/utils";
 import { getNotes } from "@/utils/fetch-mdx";
-
-const testFont = Instrument_Serif({ subsets: ["latin"], weight: ["400"] });
+import { monoFont } from "@/utils/fonts";
 
 export default async function Home() {
   const notes = await getNotes();
@@ -18,7 +17,6 @@ export default async function Home() {
       new Date(a.frontmatter.published).getTime(),
   );
   const [latestNote, ...remainingNotes] = sortedNotes;
-  const latestNoteUrl = latestNote.frontmatter.redirectUrl || `/${latestNote.fileName}`;
 
   return (
     <MainLayout>
@@ -42,14 +40,14 @@ export default async function Home() {
         </div>
       </div>
       <div>
-        <p className={cn(testFont.className, "text-[48px] leading-tight")}>
+        <p className={cn(monoFont.className, "text-[28px] leading-tight")}>
           Software engineer, composer, and creative writer. Passionate about
           crafting digital experiences others love. Currently the founder & CTO
           of Maxed.
         </p>
       </div>
       <Divider />
-      <FeaturedNote note={latestNote.frontmatter} url={latestNoteUrl} />
+      <FeaturedNote noteData={latestNote} />
       <Divider />
       <ArticleList notes={remainingNotes} />
       <Divider />
