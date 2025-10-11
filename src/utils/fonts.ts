@@ -2,6 +2,7 @@ import {
   Geist_Mono,
   Gelasio,
   IBM_Plex_Serif,
+  Inconsolata,
   Instrument_Serif,
   Source_Sans_3,
 } from "next/font/google";
@@ -36,7 +37,12 @@ export const gelasioFont = Gelasio({
   weight: ["400"],
 });
 
-export const titleFont = instrumentSerifFont;
+const inconsolataFont = Inconsolata({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
+
+export const titleFont = inconsolataFont;
 export const bodyFont = sourceSansFont;
 export const monoFont = geistMonoFont;
 export const testFont = gelasioFont;
