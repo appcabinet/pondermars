@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { titleFont } from "@/utils/fonts";
+import { bodyFont, titleFont } from "@/utils/fonts";
 
 export default function Header({
   children,
@@ -9,7 +9,7 @@ export default function Header({
   className?: string;
 }) {
   return (
-    <h3 className={cn(titleFont.className, "text-xl font-semibold", className)}>
+    <h3 className={cn(bodyFont.className, "text-xl font-semibold", className)}>
       {children}
     </h3>
   );

@@ -12,7 +12,7 @@ function formatReadingTime(readingTime: string | undefined): string {
 export default async function ArticleList({ notes }: { notes: NoteData[] }) {
   return (
     <div className="flex flex-col gap-8">
-      <Header>Writing</Header>
+      <Header>My Writing</Header>
       <table className="w-full border-separate border-spacing-y-0.5 sm:border-spacing-y-1 table-fixed">
         <tbody>
           {notes.map((note) => (

@@ -40,7 +40,7 @@ export default async function NotePage({
         <div className="flex flex-col gap-1 mt-[144px] mb-[92px] mb-24">
           <h1
             className={cn(
-              "text-[32px] text-5xl font-medium",
+              "text-4xl font-medium bg-gradient-to-b from-foreground to-foreground/90 bg-clip-text text-transparent",
               titleFont.className,
             )}
           >
