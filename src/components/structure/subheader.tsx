@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { bodyFont } from "@/utils/fonts";
+import { bodyFont, monoFont } from "@/utils/fonts";
 
 export default function Subheader({
   children,
@@ -9,7 +9,7 @@ export default function Subheader({
   className?: string;
 }) {
   return (
-    <h3 className={cn(bodyFont.className, "text-xl font-semibold", className)}>
+    <h3 className={cn(monoFont.className, "text-xl font-semibold", className)}>
       {children}
     </h3>
   );

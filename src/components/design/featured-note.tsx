@@ -1,7 +1,9 @@
 import { DateTime } from "luxon";
 import Image from "next/image";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 import type { NoteData } from "@/utils/fetch-mdx";
+import { monoFont } from "@/utils/fonts";
 import Subheader from "../structure/subheader";
 
 interface FeaturedNoteProps {
@@ -28,13 +30,21 @@ export function FeaturedNote({ noteData }: FeaturedNoteProps) {
       )}
 
       <div className="flex flex-col gap-2 flex-1 min-w-0">
-        <Subheader className="group-hover:text-accent-foreground">{frontmatter.title}</Subheader>
+        <Subheader className="group-hover:text-accent-foreground">
+          {frontmatter.title}
+        </Subheader>
 
-        <div className="text-lg text-muted-foreground opacity-70">
-          {date.toLocaleString(DateTime.DATE_MED)} • {frontmatter.readingTime}
+        <div
+          className={cn(
+            "text-lg text-muted-foreground opacity-70",
+          )}
+        >
+          {date.toLocaleString(DateTime.DATE_MED)}&nbsp;&nbsp;·&nbsp;&nbsp;{frontmatter.readingTime}
         </div>
 
-        <p className="text-lg text-muted-foreground">{frontmatter.description}</p>
+        <p className="text-lg text-muted-foreground">
+          {frontmatter.description}
+        </p>
       </div>
     </Link>
   );

@@ -4,8 +4,10 @@ import ArticleList from "@/components/structure/article-list";
 import Divider from "@/components/structure/divider";
 import MainLayout from "@/components/structure/main-layout";
 import NewsletterSubscribe from "@/components/structure/newsletter-subscribe";
+import Subheader from "@/components/structure/subheader";
 import { cn } from "@/lib/utils";
 import { getNotes } from "@/utils/fetch-mdx";
+import { monoFont } from "@/utils/fonts";
 
 export default async function Home() {
   const notes = await getNotes();
@@ -19,23 +21,9 @@ export default async function Home() {
   return (
     <MainLayout>
       <div className="flex-col md:flex-row flex justify-between items-start md:items-center gap-4">
-        <Link href="/" className="text-xl font-semibold text-muted-foreground">
-          Marcelo Mantilla
+        <Link href="/" className="">
+          <Subheader>Marcelo Mantilla</Subheader>
         </Link>
-        <div className="flex items-center gap-4 text-lg">
-          <Link
-            href="/"
-            className="hover:text-accent-foreground opacity-70 hover:opacity-100"
-          >
-            audio
-          </Link>
-          <Link
-            href="/"
-            className="hover:text-accent-foreground opacity-70 hover:opacity-100"
-          >
-            about
-          </Link>
-        </div>
       </div>
       <div>
         <p className={cn("text-lg leading-tight")}>
