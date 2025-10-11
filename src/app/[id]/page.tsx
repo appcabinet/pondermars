@@ -54,7 +54,7 @@ export default async function NotePage({
             {frontmatter.readingTime}
           </p>
         </div>
-        <article className={cn("w-full md:max-w-[600px] prose-lg", bodyFont.className)}>
+        <article className={cn("w-full max-w-[600px] lg:max-w-[600px] prose-lg text-justify", bodyFont.className)}>
           {content}
         </article>
         <div className="flex flex-col gap-12">

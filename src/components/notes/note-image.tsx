@@ -21,7 +21,7 @@ export default function NoteImage({
   };
 
   return (
-    <figure className="my-8">
+    <figure className="not-prose flex flex-col items-center space-y-3">
       <Image
         width={1000}
         height={1000}
@@ -31,7 +31,7 @@ export default function NoteImage({
         className="w-full h-auto"
       />
       {children && (
-        <figcaption className="text-sm text-muted-foreground mt-2 text-center">
+        <figcaption className="text-sm text-muted-foreground text-center">
           {children}
         </figcaption>
       )}
