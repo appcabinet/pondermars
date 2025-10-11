@@ -16,7 +16,7 @@ export default async function NotePage({
   const { content, frontmatter, fileName } = await getNote(id);
 
   return (
-    <main className="p-4">
+    <main className="p-6">
       <div className="h-[33vh] w-full bg-red-500 rounded-t-xl overflow-hidden">
         <Image
           src={"/blue-background.webp"}
@@ -28,7 +28,7 @@ export default async function NotePage({
       <div className="w-full mx-auto md:max-w-5xl">
         <div className="text-lg pt-8">
           <Link href="/" className="hover:text-accent-foreground">
-            marcelo.app
+            Marcelo Mantilla
           </Link>
           <span className="text-muted-foreground font-medium">
             &nbsp;/&nbsp;

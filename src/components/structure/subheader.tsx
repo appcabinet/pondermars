@@ -9,7 +9,7 @@ export default function Subheader({
   className?: string;
 }) {
   return (
-    <h3 className={cn(monoFont.className, "text-xl font-semibold", className)}>
+    <h3 className={cn(bodyFont.className, "text-xl font-semibold", className)}>
       {children}
     </h3>
   );

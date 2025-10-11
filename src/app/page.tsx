@@ -7,7 +7,6 @@ import NewsletterSubscribe from "@/components/structure/newsletter-subscribe";
 import Subheader from "@/components/structure/subheader";
 import { cn } from "@/lib/utils";
 import { getNotes } from "@/utils/fetch-mdx";
-import { monoFont } from "@/utils/fonts";
 
 export default async function Home() {
   const notes = await getNotes();
@@ -38,6 +37,8 @@ export default async function Home() {
       <ArticleList notes={remainingNotes} />
       <Divider />
       <NewsletterSubscribe />
+      <div />
+      <div />
       <div />
     </MainLayout>
   );
