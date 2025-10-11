@@ -1,4 +1,3 @@
-import { Instrument_Serif } from "next/font/google";
 import Link from "next/link";
 import { FeaturedNote } from "@/components/design/featured-note";
 import ArticleList from "@/components/structure/article-list";
@@ -7,7 +6,7 @@ import MainLayout from "@/components/structure/main-layout";
 import NewsletterSubscribe from "@/components/structure/newsletter-subscribe";
 import { cn } from "@/lib/utils";
 import { getNotes } from "@/utils/fetch-mdx";
-import { monoFont } from "@/utils/fonts";
+import { testFont } from "@/utils/fonts";
 
 export default async function Home() {
   const notes = await getNotes();
@@ -40,7 +39,7 @@ export default async function Home() {
         </div>
       </div>
       <div>
-        <p className={cn(monoFont.className, "text-[28px] leading-tight")}>
+        <p className={cn(testFont.className, "text-[28px] leading-tight")}>
           Software engineer, composer, and creative writer. Passionate about
           crafting digital experiences others love. Currently the founder & CTO
           of Maxed.

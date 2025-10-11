@@ -2,9 +2,8 @@ import { Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import type { NoteData } from "@/utils/fetch-mdx";
+import { monoFont } from "@/utils/fonts";
 import Subheader from "./subheader";
-
-const geistMono = Geist_Mono({ subsets: ["latin"] });
 
 function formatReadingTime(readingTime: string | undefined): string {
   if (!readingTime) return "";
@@ -22,21 +21,25 @@ export default async function ArticleList({ notes }: { notes: NoteData[] }) {
               <td
                 className={cn(
                   "hidden sm:table-cell text-muted-foreground opacity-70 sm:w-[120px]",
-                  geistMono.className,
+                  monoFont.className,
                 )}
               >
                 {note.frontmatter.published}
               </td>
               <td className="text-lg hover:text-accent-foreground w-full">
                 <div className="flex items-center gap-0 min-w-0">
-                  <span className="sm:hidden pr-4 opacity-70 flex-shrink-0">•</span>
-                  <Link href={`/${note.fileName}`} className="truncate">{note.frontmatter.title}</Link>
+                  <span className="sm:hidden pr-4 opacity-70 flex-shrink-0">
+                    •
+                  </span>
+                  <Link href={`/${note.fileName}`} className="truncate">
+                    {note.frontmatter.title}
+                  </Link>
                 </div>
               </td>
               <td
                 className={cn(
                   "text-right text-muted-foreground opacity-70 text-[15px] sm:w-[80px] w-[40px]",
-                  geistMono.className,
+                  monoFont.className,
                 )}
               >
                 <span className="hidden sm:inline">
