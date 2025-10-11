@@ -30,11 +30,11 @@ export default async function NotePage({
           <Link href="/" className="hover:text-accent-foreground">
             Marcelo Mantilla
           </Link>
-          <span className="text-muted-foreground font-medium">
-            &nbsp;/&nbsp;
+          <span className="text-muted-foreground font-semibold">
+            &nbsp;&nbsp;/&nbsp;&nbsp;
           </span>
           <Link href={`/${fileName}`} className="hover:text-accent-foreground">
-            <span className="opacity-70 hover:opacity-100">{frontmatter.title}</span>
+            <span className="opacity-60 hover:opacity-100">{frontmatter.title}</span>
           </Link>
         </div>
         <div className="flex flex-col gap-1 mt-[144px] mb-[92px] mb-24">
@@ -46,7 +46,7 @@ export default async function NotePage({
           >
             {frontmatter.title}
           </h1>
-          <p className="text-lg opacity-70">
+          <p className="text-lg opacity-60">
             {DateTime.fromISO(frontmatter.published).toLocaleString(
               DateTime.DATE_FULL,
             )}
