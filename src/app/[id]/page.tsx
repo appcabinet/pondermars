@@ -5,7 +5,7 @@ import Divider from "@/components/structure/divider";
 import NewsletterSubscribe from "@/components/structure/newsletter-subscribe";
 import { cn } from "@/lib/utils";
 import { getNote } from "@/utils/fetch-mdx";
-import { titleFont } from "@/utils/fonts";
+import { bodyFont, titleFont } from "@/utils/fonts";
 
 export default async function NotePage({
   params,
@@ -34,7 +34,7 @@ export default async function NotePage({
             &nbsp;/&nbsp;
           </span>
           <Link href={`/${fileName}`} className="hover:text-accent-foreground">
-            <span className="opacity-70 hover:opacity-100">{fileName}</span>
+            <span className="opacity-70 hover:opacity-100">{frontmatter.title}</span>
           </Link>
         </div>
         <div className="flex flex-col gap-1 mt-[144px] mb-[92px] mb-24">
@@ -48,11 +48,15 @@ export default async function NotePage({
           </h1>
           <p className="text-lg opacity-70">
             {DateTime.fromISO(frontmatter.published).toLocaleString(
-              DateTime.DATE_MED,
+              DateTime.DATE_FULL,
             )}
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+            {frontmatter.readingTime}
           </p>
         </div>
-        <article className="w-full md:max-w-2xl prose-lg">{content}</article>
+        <article className={cn("w-full md:max-w-[600px] prose-lg", bodyFont.className)}>
+          {content}
+        </article>
         <div className="flex flex-col gap-12">
           <div />
           <Divider />
