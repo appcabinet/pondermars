@@ -8,6 +8,7 @@ import Aside from "@/components/notes/aside";
 import Callout from "@/components/notes/callout";
 import CenterQuote from "@/components/notes/center-quote";
 import Container from "@/components/notes/container";
+import { ATag, ListElement } from "@/components/notes/elements";
 import NoteImage from "@/components/notes/note-image";
 
 const contentDir = path.join(process.cwd(), "src", "notes");
@@ -40,6 +41,8 @@ export async function getNote(fileName: string) {
       Callout,
       CenterQuote,
       Container,
+      a: ATag,
+      li: ListElement,
     },
   });
 
