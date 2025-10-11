@@ -1,9 +1,14 @@
-'use server';
+"use server";
 
 import fs from "fs";
 import { compileMDX } from "next-mdx-remote/rsc";
 import path from "path";
 import { z } from "zod";
+import Aside from "@/components/notes/aside";
+import Callout from "@/components/notes/callout";
+import CenterQuote from "@/components/notes/center-quote";
+import Container from "@/components/notes/container";
+import NoteImage from "@/components/notes/note-image";
 
 const contentDir = path.join(process.cwd(), "src", "notes");
 
@@ -28,7 +33,14 @@ export async function getNote(fileName: string) {
     source: fileContent,
     options: {
       parseFrontmatter: true,
-    }
+    },
+    components: {
+      Aside,
+      NoteImage,
+      Callout,
+      CenterQuote,
+      Container,
+    },
   });
 
   const validatedFrontmatter = NoteSchema.parse(frontmatter);
