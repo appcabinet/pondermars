@@ -1,15 +1,21 @@
+import { Instrument_Serif } from "next/font/google";
 import Link from "next/link";
 import { FeaturedNote } from "@/components/design/featured-note";
 import ArticleList from "@/components/structure/article-list";
 import Divider from "@/components/structure/divider";
 import MainLayout from "@/components/structure/main-layout";
 import NewsletterSubscribe from "@/components/structure/newsletter-subscribe";
+import { cn } from "@/lib/utils";
 import { getNotes } from "@/utils/fetch-mdx";
+
+const testFont = Instrument_Serif({ subsets: ["latin"], weight: ["400"] });
 
 export default async function Home() {
   const notes = await getNotes();
-  const latestNote = notes.sort((a, b) =>
-    new Date(b.frontmatter.published).getTime() - new Date(a.frontmatter.published).getTime()
+  const latestNote = notes.sort(
+    (a, b) =>
+      new Date(b.frontmatter.published).getTime() -
+      new Date(a.frontmatter.published).getTime(),
   )[0];
 
   return (
@@ -40,8 +46,10 @@ export default async function Home() {
         </div>
       </div>
       <div>
-        <p className="text-lg">
-          Software engineer, designer, and creative writer. Passionate about crafting digital experiences others love. Currently the founder & CTO of Maxed.
+        <p className={cn(testFont.className, "text-[48px] leading-tight")}>
+          Software engineer, composer, and creative writer. Passionate about
+          crafting digital experiences others love. Currently the founder & CTO
+          of Maxed.
         </p>
       </div>
       <Divider />

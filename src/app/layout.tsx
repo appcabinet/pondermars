@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
-import { Source_Sans_3 } from "next/font/google";
+import { cn } from "@/lib/utils";
 import "./globals.css";
-
-const sourceSans3 = Source_Sans_3({
-  variable: "--font-source-sans-3",
-  subsets: ["latin"],
-});
+import { bodyFont } from "@/utils/fonts";
 
 export const metadata: Metadata = {
   title: "Ponder Mars",
@@ -23,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${sourceSans3.className} antialiased`}
+        className={cn(bodyFont.className, "antialiased")}
       >
         {children}
       </body>
