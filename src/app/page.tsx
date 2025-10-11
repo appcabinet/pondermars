@@ -6,7 +6,6 @@ import MainLayout from "@/components/structure/main-layout";
 import NewsletterSubscribe from "@/components/structure/newsletter-subscribe";
 import { cn } from "@/lib/utils";
 import { getNotes } from "@/utils/fetch-mdx";
-import { testFont } from "@/utils/fonts";
 
 export default async function Home() {
   const notes = await getNotes();
@@ -39,7 +38,7 @@ export default async function Home() {
         </div>
       </div>
       <div>
-        <p className={cn(testFont.className, "text-[28px] leading-tight")}>
+        <p className={cn("text-lg leading-tight")}>
           Software engineer, composer, and creative writer. Passionate about
           crafting digital experiences others love. Currently the founder & CTO
           of Maxed.

@@ -1,4 +1,3 @@
-import { Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import type { NoteData } from "@/utils/fetch-mdx";

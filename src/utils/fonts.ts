@@ -1,21 +1,42 @@
-import { Geist_Mono, Instrument_Serif, Source_Sans_3 } from "next/font/google";
+import {
+  Geist_Mono,
+  Gelasio,
+  IBM_Plex_Serif,
+  Instrument_Serif,
+  Source_Sans_3,
+} from "next/font/google";
 import localFont from "next/font/local";
 
-export const bodyFont = Source_Sans_3({
+const instrumentSerifFont = Instrument_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+const sourceSansFont = Source_Sans_3({
   variable: "--font-source-sans-3",
   subsets: ["latin"],
 });
 
-// export const monoFont = localFont({
-//   src: '../../public/PaperMono-Regular.ttf',
-//   variable: "--font-paper-mono",
-// });
+const paperMonoFont = localFont({
+  src: "../../public/PaperMono-Regular.ttf",
+  variable: "--font-paper-mono",
+});
 
-export const monoFont = Geist_Mono({
+const geistMonoFont = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const titleFont = Instrument_Serif({
+const ibmPlexSerifFont = IBM_Plex_Serif({
   subsets: ["latin"],
   weight: ["400"],
 });
+
+export const gelasioFont = Gelasio({
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+export const titleFont = instrumentSerifFont;
+export const bodyFont = sourceSansFont;
+export const monoFont = geistMonoFont;
+export const testFont = gelasioFont;
