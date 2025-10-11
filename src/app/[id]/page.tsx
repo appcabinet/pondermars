@@ -4,5 +4,13 @@ export default async function NotePage({ params }: { params: Promise<{ id: strin
   const { id } = await params;
   const { content, frontmatter } = await getNote(id);
 
-  return <div className="prose">{content}</div>;
+  return (
+    <main className="prose">
+      <div className="w-full mx-auto md:max-w-5xl">
+        <div className="w-full md:max-w-2xl">
+        {content}
+        </div>
+      </div>
+    </main>
+  );
 }
