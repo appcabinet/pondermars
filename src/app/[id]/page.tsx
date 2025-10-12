@@ -1,5 +1,6 @@
 import { DateTime } from "luxon";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import ContentContainer from "@/components/notes/content-container";
 import ImageDialog from "@/components/notes/image-dialog";
 import ParallaxImage from "@/components/notes/parallax-image";
@@ -7,7 +8,7 @@ import Divider from "@/components/structure/divider";
 import NewsletterSubscribe from "@/components/structure/newsletter-subscribe";
 import { cn } from "@/lib/utils";
 import { getNote } from "@/utils/fetch-mdx";
-import { bodyFont, titleFont } from "@/utils/fonts";
+import { titleFont } from "@/utils/fonts";
 
 export default async function NotePage({
   params,
@@ -16,6 +17,10 @@ export default async function NotePage({
 }) {
   const { id } = await params;
   const { content, frontmatter, fileName } = await getNote(id);
+
+  if (frontmatter.redirectUrl) {
+    return redirect(frontmatter.redirectUrl);
+  }
 
   return (
     <main className="p-5 md:p-6">
