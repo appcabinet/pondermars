@@ -7,7 +7,7 @@ const resend = new Resend(env.RESEND_API_KEY);
 
 export async function subscribeToNewsletter(email: string) {
   try {
-    const result = await await resend.contacts.create({
+    const result = await resend.contacts.create({
       email,
       unsubscribed: false,
       audienceId: env.RESEND_AUDIENCE_ID,
