@@ -1,4 +1,8 @@
+"use client";
+
+import { useSetAtom } from "jotai";
 import Image, { type StaticImageData } from "next/image";
+import { imageDialogAtom } from "@/atoms";
 
 interface NoteImageProps {
   src: StaticImageData | string;
@@ -20,16 +24,24 @@ export default function NoteImage({
     max: 100,
   };
 
+  const setImageDialog = useSetAtom(imageDialogAtom);
+
   return (
     <figure className="not-prose flex flex-col items-center space-y-3 mt-4">
-      <Image
-        width={1000}
-        height={1000}
-        src={src}
-        alt={alt}
-        quality={qualityMap[quality]}
-        className="w-full h-auto rounded-sm"
-      />
+      <button
+        type="button"
+        onClick={() => setImageDialog({ src, alt })}
+        className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-ring rounded-sm"
+      >
+        <Image
+          width={1000}
+          height={1000}
+          src={src}
+          alt={alt}
+          quality={qualityMap[quality]}
+          className="w-full h-auto rounded-sm"
+        />
+      </button>
       {children && (
         <figcaption className="text-sm text-muted-foreground text-center">
           {children}

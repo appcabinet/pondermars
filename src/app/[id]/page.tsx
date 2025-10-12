@@ -7,6 +7,7 @@ import NewsletterSubscribe from "@/components/structure/newsletter-subscribe";
 import { cn } from "@/lib/utils";
 import { getNote } from "@/utils/fetch-mdx";
 import { bodyFont, titleFont } from "@/utils/fonts";
+import ImageDialog from "@/components/notes/image-dialog";
 
 export default async function NotePage({
   params,
@@ -18,6 +19,7 @@ export default async function NotePage({
 
   return (
     <main className="p-5 md:p-6">
+      <ImageDialog />
       <div className="h-[33vh] w-full rounded-t-xl overflow-hidden">
         <Image
           src={"/blue-background.webp"}
