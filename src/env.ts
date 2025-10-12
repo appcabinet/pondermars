@@ -8,4 +8,9 @@ export const env = createEnv({
   },
   runtimeEnv: process.env,
 
+  clientPrefix: "NEXT_PUBLIC_",
+  client: {
+    NEXT_PUBLIC_POSTHOG_KEY: z.string(),
+  }
+
 });
