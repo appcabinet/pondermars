@@ -8,7 +8,8 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "biome check",
-    "format": "biome format --write"
+    "format": "biome format --write",
+    "prep": "npm run format:write && npm run lint:fix && npm run typecheck"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
