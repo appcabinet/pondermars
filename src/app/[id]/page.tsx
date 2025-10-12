@@ -1,6 +1,7 @@
 import { DateTime } from "luxon";
 import Image from "next/image";
 import Link from "next/link";
+import ContentContainer from "@/components/notes/content-container";
 import Divider from "@/components/structure/divider";
 import NewsletterSubscribe from "@/components/structure/newsletter-subscribe";
 import { cn } from "@/lib/utils";
@@ -34,7 +35,9 @@ export default async function NotePage({
             &nbsp;&nbsp;/&nbsp;&nbsp;
           </span>
           <Link href={`/${fileName}`} className="hover:text-accent-foreground">
-            <span className="opacity-60 hover:opacity-100">{frontmatter.title}</span>
+            <span className="opacity-60 hover:opacity-100">
+              {frontmatter.title}
+            </span>
           </Link>
         </div>
         <div className="flex flex-col gap-2 mt-[144px] mb-[92px] mb-24">
@@ -55,9 +58,7 @@ export default async function NotePage({
           </p>
         </div>
 
-        <article className={cn("w-full max-w-2xl prose-lg md:text-justify", bodyFont.className)}>
-          {content}
-        </article>
+        <ContentContainer>{content}</ContentContainer>
 
         <div className="flex flex-col gap-12">
           <div />
