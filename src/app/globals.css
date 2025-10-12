@@ -131,4 +131,23 @@
   p, li, span, div {
     @apply leading-snug;
   }
+
+  /* Override prose list item margins */
+  article li {
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+  }
+
+  /* Custom font classes */
+  .font-title {
+    font-family: var(--font-inconsolata), monospace;
+  }
+  
+  .font-body {
+    font-family: var(--font-source-sans-3), sans-serif;
+  }
+  
+  .font-mono {
+    font-family: var(--font-inconsolata), monospace;
+  }
 }

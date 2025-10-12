@@ -1,15 +1,15 @@
 interface CalloutProps {
-  type?: string
+  title?: string
   children: React.ReactNode
 }
 
-export default function Callout({ type = 'INFO', children }: CalloutProps) {
+export default function Callout({ title, children }: CalloutProps) {
   return (
-    <div className="border-l-4 border-primary pl-4 py-3 my-4">
-      {type && (
-        <div className="font-semibold text-sm uppercase mb-2">{type}</div>
+    <div className="bg-card p-4 rounded-lg my-6 callout border border-border">
+      {title && (
+        <div className="font-semibold text-muted-foreground">{title}</div>
       )}
-      <div className="text-sm">{children}</div>
+      <div className="[&>p:last-child]:mb-0">{children}</div>
     </div>
   )
 }

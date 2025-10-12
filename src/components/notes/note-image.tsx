@@ -21,14 +21,14 @@ export default function NoteImage({
   };
 
   return (
-    <figure className="not-prose flex flex-col items-center space-y-3">
+    <figure className="not-prose flex flex-col items-center space-y-3 mt-4">
       <Image
         width={1000}
         height={1000}
         src={src}
         alt={alt}
         quality={qualityMap[quality]}
-        className="w-full h-auto"
+        className="w-full h-auto rounded-sm"
       />
       {children && (
         <figcaption className="text-sm text-muted-foreground text-center">
