@@ -1,13 +1,13 @@
 import { DateTime } from "luxon";
-import Image from "next/image";
 import Link from "next/link";
 import ContentContainer from "@/components/notes/content-container";
+import ImageDialog from "@/components/notes/image-dialog";
+import ParallaxImage from "@/components/notes/parallax-image";
 import Divider from "@/components/structure/divider";
 import NewsletterSubscribe from "@/components/structure/newsletter-subscribe";
 import { cn } from "@/lib/utils";
 import { getNote } from "@/utils/fetch-mdx";
 import { bodyFont, titleFont } from "@/utils/fonts";
-import ImageDialog from "@/components/notes/image-dialog";
 
 export default async function NotePage({
   params,
@@ -20,14 +20,7 @@ export default async function NotePage({
   return (
     <main className="p-5 md:p-6">
       <ImageDialog />
-      <div className="h-[33vh] w-full rounded-t-xl overflow-hidden">
-        <Image
-          src={"/blue-background.webp"}
-          width={10000}
-          height={1000}
-          alt="Blue background"
-        />
-      </div>
+      <ParallaxImage />
       <div className="w-full mx-auto md:max-w-5xl">
         <div className="text-lg pt-8">
           <Link href="/" className="hover:text-accent-foreground">
