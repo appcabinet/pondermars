@@ -49,9 +49,11 @@ published: string (required, ISO date format)
 updated: string (required, ISO date format)
 readingTime: string (required)
 tags: array of strings (defaults to [])
-coverImage: string (optional)
 redirectUrl: string (optional)
-imageAlt: string (optional)
+coverImage: string (optional)
+coverImageAlt: string (optional)
+backgroundCoverImage: string (optional)
+backgroundCoverImageAlt: string (optional)
 ```
 
 ### Component Structure

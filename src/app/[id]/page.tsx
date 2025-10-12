@@ -20,10 +20,15 @@ export default async function NotePage({
   return (
     <main className="p-5 md:p-6">
       <ImageDialog />
-      <ParallaxImage />
+      {frontmatter.backgroundCoverImage && (
+        <ParallaxImage
+          src={frontmatter.backgroundCoverImage}
+          alt={frontmatter.backgroundCoverImageAlt || ""}
+        />
+      )}
       <div className="w-full mx-auto md:max-w-5xl">
         <div className="text-lg pt-8">
-          <Link href="/" className="hover:text-accent-foreground">
+          <Link href="/" className="hover:text-accent-foreground font-medium">
             Marcelo Mantilla
           </Link>
           <span className="text-muted-foreground font-semibold">

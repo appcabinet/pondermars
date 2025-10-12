@@ -21,8 +21,10 @@ const NoteSchema = z.object({
   readingTime: z.string(),
   tags: z.array(z.string()).default([]),
   coverImage: z.string().optional(),
+  backgroundCoverImage: z.string().optional(),
+  backgroundCoverImageAlt: z.string().optional(),
   redirectUrl: z.string().optional(),
-  imageAlt: z.string().optional(),
+  coverImageAlt: z.string().optional(),
 });
 
 export type Note = z.infer<typeof NoteSchema>;

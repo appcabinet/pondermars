@@ -3,7 +3,12 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-export default function ParallaxImage() {
+interface ParallaxImageProps {
+  src: string;
+  alt: string;
+}
+
+export default function ParallaxImage({ src, alt }: ParallaxImageProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState(0);
 
@@ -36,10 +41,10 @@ export default function ParallaxImage() {
         }}
       >
         <Image
-          src="/blue-background.webp"
+          src={src}
           width={10000}
           height={1000}
-          alt="Blue background"
+          alt={alt}
           priority
         />
       </div>

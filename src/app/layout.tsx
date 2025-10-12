@@ -5,7 +5,7 @@ import { ReactLenis } from "lenis/react";
 import { bodyFont } from "@/utils/fonts";
 
 export const metadata: Metadata = {
-  title: "Ponder Mars",
+  title: "Marcelo Mantilla",
   description: "Notes, articles, and essays",
   icons: {
     icon: "/favicon.png",
