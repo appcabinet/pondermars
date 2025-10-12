@@ -12,7 +12,7 @@ export default function ContentContainer({
   return (
     <article
       className={cn(
-        "w-full max-w-2xl prose-lg md:text-justify",
+        "w-full max-w-2xl prose-lg md:text-justify hyphens-auto",
         bodyFont.className,
       )}
     >

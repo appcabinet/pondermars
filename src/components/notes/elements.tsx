@@ -28,7 +28,7 @@ export const ATag = (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
 
 export const ListElement = (
   props: React.AnchorHTMLAttributes<HTMLAnchorElement>,
-) => <li className="">{props.children}</li>;
+) => <li className="list-[square] marker:text-muted-foreground">{props.children}</li>;
 
 export const H1Element = (props: React.HTMLAttributes<HTMLHeadingElement>) => (
   <h1

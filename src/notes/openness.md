@@ -4,4 +4,5 @@ description: ""
 published: "2023-12-03"
 updated: "2023-12-03"
 readingTime: "5 min"
+redirectUrl: "https://writing.marcelo.app/p/openness-and-relationships"
 ---

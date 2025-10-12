@@ -28,7 +28,7 @@ export default async function NotePage({
       )}
       <div className="w-full mx-auto md:max-w-5xl">
         <div className="text-lg pt-8">
-          <Link href="/" className="hover:text-accent-foreground font-medium">
+          <Link href="/" className="hover:text-accent-foreground">
             Marcelo Mantilla
           </Link>
           <span className="text-muted-foreground font-semibold">

@@ -27,7 +27,7 @@ export default function NoteImage({
   const setImageDialog = useSetAtom(imageDialogAtom);
 
   return (
-    <figure className="not-prose flex flex-col items-center space-y-3 mt-4">
+    <figure className="not-prose flex flex-col items-center space-y-3 mt-6">
       <button
         type="button"
         onClick={() => setImageDialog({ src, alt })}
