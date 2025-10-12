@@ -17,14 +17,14 @@ export default async function NotePage({
 
   return (
     <main className="p-5 md:p-6">
-      {/* <div className="h-[33vh] w-full bg-red-500 rounded-t-xl overflow-hidden">
+      <div className="h-[33vh] w-full rounded-t-xl overflow-hidden">
         <Image
           src={"/blue-background.webp"}
           width={10000}
           height={1000}
           alt="Blue background"
         />
-      </div> */}
+      </div>
       <div className="w-full mx-auto md:max-w-5xl">
         <div className="text-lg pt-8">
           <Link href="/" className="hover:text-accent-foreground">
@@ -55,7 +55,7 @@ export default async function NotePage({
           </p>
         </div>
 
-        <article className={cn("w-full max-w-2xl prose-lg text-justify", bodyFont.className)}>
+        <article className={cn("w-full max-w-2xl prose-lg md:text-justify", bodyFont.className)}>
           {content}
         </article>
 
@@ -63,6 +63,8 @@ export default async function NotePage({
           <div />
           <Divider />
           <NewsletterSubscribe />
+          <div />
+          <div />
           <div />
           <div />
         </div>

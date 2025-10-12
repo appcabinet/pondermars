@@ -32,7 +32,7 @@ export const ListElement = (
 
 export const H1Element = (props: React.HTMLAttributes<HTMLHeadingElement>) => (
   <h1
-    className={cn("text-3xl font-semibold mb-8 mt-12", titleFont.className)}
+    className={cn("text-3xl font-semibold mb-8 mt-12 text-left", titleFont.className)}
     {...props}
   >
     {props.children}
@@ -41,7 +41,7 @@ export const H1Element = (props: React.HTMLAttributes<HTMLHeadingElement>) => (
 
 export const H2Element = (props: React.HTMLAttributes<HTMLHeadingElement>) => (
   <h2
-    className={cn("text-2xl font-semibold mb-5 mt-8", titleFont.className)}
+    className={cn("text-2xl font-semibold mb-5 mt-8 text-left", titleFont.className)}
     {...props}
   >
     {props.children}
@@ -50,7 +50,7 @@ export const H2Element = (props: React.HTMLAttributes<HTMLHeadingElement>) => (
 
 export const H3Element = (props: React.HTMLAttributes<HTMLHeadingElement>) => (
   <h3
-    className={cn("text-xl font-semibold mb-5 mt-7", titleFont.className)}
+    className={cn("text-xl font-semibold mb-5 mt-7 text-left", titleFont.className)}
     {...props}
   >
     {props.children}
