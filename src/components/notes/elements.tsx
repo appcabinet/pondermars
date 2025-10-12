@@ -15,7 +15,7 @@ export const BlockQuoteElement = (
 
 export const ParagraphElement = (
   props: React.AnchorHTMLAttributes<HTMLAnchorElement>,
-) => <p className="text-justify">{props.children}</p>;
+) => <p className="">{props.children}</p>;
 
 export const ATag = (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
   <a
