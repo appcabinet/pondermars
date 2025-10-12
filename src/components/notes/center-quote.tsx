@@ -1,6 +1,6 @@
 export default function CenterQuote({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-muted p-4 rounded-md text-center text-lg">
+    <div className="border-t border-b text-center py-4 my-8 text-muted-foreground">
       {children}
     </div>
   )

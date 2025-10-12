@@ -5,7 +5,7 @@ interface CalloutProps {
 
 export default function Callout({ title, children }: CalloutProps) {
   return (
-    <div className="bg-card p-4 rounded-lg my-6 callout border border-border">
+    <div className="bg-card p-4 md:p-6 rounded-lg my-6 callout border border-border">
       {title && (
         <div className="font-semibold text-muted-foreground">{title}</div>
       )}

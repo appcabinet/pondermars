@@ -16,7 +16,7 @@ export default async function NotePage({
   const { content, frontmatter, fileName } = await getNote(id);
 
   return (
-    <main className="p-6">
+    <main className="p-5 md:p-6">
       {/* <div className="h-[33vh] w-full bg-red-500 rounded-t-xl overflow-hidden">
         <Image
           src={"/blue-background.webp"}
@@ -37,10 +37,10 @@ export default async function NotePage({
             <span className="opacity-60 hover:opacity-100">{frontmatter.title}</span>
           </Link>
         </div>
-        <div className="flex flex-col gap-1 mt-[144px] mb-[92px] mb-24">
+        <div className="flex flex-col gap-2 mt-[144px] mb-[92px] mb-24">
           <h1
             className={cn(
-              "text-4xl font-medium bg-gradient-to-b from-foreground to-foreground/90 bg-clip-text text-transparent",
+              "text-4xl font-semibold bg-gradient-to-b from-foreground to-foreground/90 bg-clip-text text-transparent",
               titleFont.className,
             )}
           >
