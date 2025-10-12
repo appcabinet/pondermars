@@ -31,7 +31,7 @@ export default function NoteImage({
       <button
         type="button"
         onClick={() => setImageDialog({ src, alt })}
-        className="cursor-pointer focus:outline-none focus:ring-2 focus:ring-ring rounded-sm"
+        className="cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-ring rounded-sm"
       >
         <Image
           width={1000}
