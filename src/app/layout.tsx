@@ -19,10 +19,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ReactLenis root options={{
-        smoothWheel: true,
-        duration: 0.3,
-      }} />
+      <ReactLenis
+        root
+        options={{
+          smoothWheel: true,
+          duration: 0.3,
+        }}
+      />
       <body className={cn(bodyFont.className, "antialiased bg-background")}>
         {children}
       </body>

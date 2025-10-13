@@ -34,12 +34,9 @@ export function FeaturedNote({ noteData }: FeaturedNoteProps) {
           {frontmatter.title}
         </Header>
 
-        <div
-          className={cn(
-            "text-lg text-muted-foreground opacity-70",
-          )}
-        >
-          {date.toLocaleString(DateTime.DATE_MED)}&nbsp;&nbsp;·&nbsp;&nbsp;{frontmatter.readingTime}
+        <div className={cn("text-lg text-muted-foreground opacity-70")}>
+          {date.toLocaleString(DateTime.DATE_MED)}&nbsp;&nbsp;·&nbsp;&nbsp;
+          {frontmatter.readingTime}
         </div>
 
         <p className="text-lg text-muted-foreground">

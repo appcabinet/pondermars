@@ -25,14 +25,14 @@ export default async function NotePage({
   return (
     <main className="p-5 md:p-6">
       <ImageDialog />
-      {frontmatter.backgroundCoverImage && (
+      {/* {frontmatter.backgroundCoverImage && (
         <ParallaxImage
           src={frontmatter.backgroundCoverImage}
           alt={frontmatter.backgroundCoverImageAlt || ""}
         />
-      )}
+      )} */}
       <div className="w-full mx-auto md:max-w-5xl">
-        <div className="text-lg pt-8">
+        <div className="text-lg pt-6 md:pt-8">
           <Link href="/" className="hover:text-accent-foreground">
             Marcelo Mantilla
           </Link>
@@ -45,10 +45,10 @@ export default async function NotePage({
             </span>
           </Link>
         </div>
-        <div className="flex flex-col gap-2 mt-[144px] mb-[92px] mb-24">
+        <div className="flex flex-col gap-1 md:gap-2 mb-[72px] mt-[112px] md:mt-[144px] md:mb-[92px] mb-24">
           <h1
             className={cn(
-              "text-4xl font-semibold bg-gradient-to-b from-foreground to-foreground/90 bg-clip-text text-transparent",
+              "text-3xl md:text-4xl font-semibold bg-gradient-to-b from-foreground to-foreground/90 bg-clip-text text-transparent",
               titleFont.className,
             )}
           >

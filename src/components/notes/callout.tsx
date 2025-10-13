@@ -1,6 +1,6 @@
 interface CalloutProps {
-  title?: string
-  children: React.ReactNode
+  title?: string;
+  children: React.ReactNode;
 }
 
 export default function Callout({ title, children }: CalloutProps) {
@@ -11,5 +11,5 @@ export default function Callout({ title, children }: CalloutProps) {
       )}
       <div className="[&>p:last-child]:mb-0">{children}</div>
     </div>
-  )
+  );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { CheckIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { subscribeToNewsletter } from "@/app/actions/resend";
@@ -35,12 +36,19 @@ export default function NewsletterSubscribe() {
     <div className="flex flex-col gap-8">
       <Header>Get Updates From Me</Header>
       <p className="text-lg pb-1">
-        Get a short email every time I release a new article. You can also find me on&nbsp;
-        <Link href="https://github.com/pondermars" className="text-accent-foreground">
+        Get a short email every time I release a new article. You can also find
+        me on&nbsp;
+        <Link
+          href="https://github.com/pondermars"
+          className="text-accent-foreground"
+        >
           GitHub
         </Link>
         ,&nbsp;
-        <Link href="https://x.com/pondermars" className="text-accent-foreground">
+        <Link
+          href="https://x.com/pondermars"
+          className="text-accent-foreground"
+        >
           Twitter
         </Link>
         , and
@@ -54,7 +62,14 @@ export default function NewsletterSubscribe() {
         .
       </p>
       {isSuccess ? (
-        <p className="text-lg text-muted-foreground">Thanks for subscribing!</p>
+        <div className="flex items-center gap-2">
+          <p className="text-lg text-muted-foreground">
+            You&apos;re subscribed!
+          </p>
+          <div className="bg-green-500 rounded-full p-1 h-5 w-5 flex items-center justify-center">
+          <CheckIcon className="size-4 text-white" />
+          </div>
+        </div>
       ) : (
         <form onSubmit={handleSubmit} className="flex gap-2">
           <Input

@@ -8,7 +8,16 @@ import Aside from "@/components/notes/aside";
 import Callout from "@/components/notes/callout";
 import CenterQuote from "@/components/notes/center-quote";
 import Container from "@/components/notes/container";
-import { ATag, BlockQuoteElement, H1Element, H2Element, H3Element, ListElement, ParagraphElement, StrongElement } from "@/components/notes/elements";
+import {
+  ATag,
+  BlockQuoteElement,
+  H1Element,
+  H2Element,
+  H3Element,
+  ListElement,
+  ParagraphElement,
+  StrongElement,
+} from "@/components/notes/elements";
 import NoteImage from "@/components/notes/note-image";
 
 const contentDir = path.join(process.cwd(), "src", "notes");
@@ -50,7 +59,7 @@ export async function getNote(fileName: string) {
       h1: H1Element,
       h2: H2Element,
       h3: H3Element,
-      blockquote: BlockQuoteElement
+      blockquote: BlockQuoteElement,
     },
   });
 

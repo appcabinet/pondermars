@@ -40,13 +40,7 @@ export default function ParallaxImage({ src, alt }: ParallaxImageProps) {
           willChange: "transform",
         }}
       >
-        <Image
-          src={src}
-          width={10000}
-          height={1000}
-          alt={alt}
-          priority
-        />
+        <Image src={src} width={10000} height={1000} alt={alt} priority />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { createEnv } from "@t3-oss/env-core";
 import { z } from "zod";
- 
+
 export const env = createEnv({
   server: {
     RESEND_API_KEY: z.string(),
@@ -18,5 +18,4 @@ export const env = createEnv({
     NEXT_PUBLIC_POSTHOG_KEY: z.string(),
     NEXT_PUBLIC_POSTHOG_HOST: z.string(),
   },
-
 });

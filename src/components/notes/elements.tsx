@@ -28,11 +28,18 @@ export const ATag = (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
 
 export const ListElement = (
   props: React.AnchorHTMLAttributes<HTMLAnchorElement>,
-) => <li className="list-[square] marker:text-muted-foreground">{props.children}</li>;
+) => (
+  <li className="list-[square] marker:text-muted-foreground">
+    {props.children}
+  </li>
+);
 
 export const H1Element = (props: React.HTMLAttributes<HTMLHeadingElement>) => (
   <h1
-    className={cn("text-3xl font-semibold mb-8 mt-12 text-left", titleFont.className)}
+    className={cn(
+      "text-3xl font-semibold mb-8 mt-12 text-left",
+      titleFont.className,
+    )}
     {...props}
   >
     {props.children}
@@ -41,7 +48,10 @@ export const H1Element = (props: React.HTMLAttributes<HTMLHeadingElement>) => (
 
 export const H2Element = (props: React.HTMLAttributes<HTMLHeadingElement>) => (
   <h2
-    className={cn("text-2xl font-semibold mb-5 mt-8 text-left", titleFont.className)}
+    className={cn(
+      "text-2xl font-semibold mb-5 mt-8 text-left",
+      titleFont.className,
+    )}
     {...props}
   >
     {props.children}
@@ -50,7 +60,10 @@ export const H2Element = (props: React.HTMLAttributes<HTMLHeadingElement>) => (
 
 export const H3Element = (props: React.HTMLAttributes<HTMLHeadingElement>) => (
   <h3
-    className={cn("text-xl font-semibold mb-5 mt-7 text-left", titleFont.className)}
+    className={cn(
+      "text-xl font-semibold mb-5 mt-7 text-left",
+      titleFont.className,
+    )}
     {...props}
   >
     {props.children}

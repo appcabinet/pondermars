@@ -1,8 +1,4 @@
-import {
-  Inconsolata,
-  Instrument_Serif,
-  Source_Sans_3,
-} from "next/font/google";
+import { Inconsolata, Instrument_Serif, Source_Sans_3 } from "next/font/google";
 
 const instrumentSerifFont = Instrument_Serif({
   subsets: ["latin"],
@@ -14,7 +10,6 @@ const sourceSansFont = Source_Sans_3({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
 });
-
 
 const inconsolataFont = Inconsolata({
   subsets: ["latin"],

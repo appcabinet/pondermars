@@ -20,11 +20,14 @@ export default function ImageDialog() {
       open={imageDialog !== null}
       onOpenChange={() => setImageDialog(null)}
     >
-      <DialogContent 
-        className="p-0 border-none bg-transparent shadow-none max-w-none sm:max-w-none w-screen h-screen" 
+      <DialogContent
+        className="p-0 border-none bg-transparent shadow-none max-w-none sm:max-w-none w-screen h-screen"
         showCloseButton={false}
       >
-        <DialogClose className="absolute top-6 right-6 rounded-full bg-black/20 z-50 w-10 h-10 flex items-center justify-center hover:cursor-pointer hover:bg-black/50 transition-all duration-100" onClick={() => setImageDialog(null)}>
+        <DialogClose
+          className="absolute top-4 md:top-6 right-4 md:right-6 rounded-full bg-black/20 z-50 w-10 h-10 flex items-center justify-center hover:cursor-pointer hover:bg-black/50 transition-all duration-100"
+          onClick={() => setImageDialog(null)}
+        >
           <XIcon className="text-white/70" />
         </DialogClose>
         <DialogTitle className="sr-only">
