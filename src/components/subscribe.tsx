@@ -60,10 +60,8 @@ export default function SubscribeDialog({
       <DialogContent>
         <DialogHeader>
           <DialogTitle className={cn("text-2xl", titleFont.className)}>Subscribe</DialogTitle>
-          <DialogDescription className="text-base pb-1">
-            Trying to create the best digital reading experience on the planet.
-            Subscribe below to get an update everytime I release a new article
-            :)
+          <DialogDescription className="text-lg pb-1">
+            I write about entrepreneurship, systems thinking, and philosophy.
           </DialogDescription>
         </DialogHeader>
         <div className="flex flex-col gap-4">
@@ -80,7 +78,7 @@ export default function SubscribeDialog({
             <form onSubmit={handleSubmit} className="flex gap-2">
               <Input
                 type="email"
-                placeholder="Your email"
+                placeholder="Type your email..."
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={isSubmitting}
