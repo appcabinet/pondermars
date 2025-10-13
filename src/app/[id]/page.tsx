@@ -6,6 +6,7 @@ import ImageDialog from "@/components/notes/image-dialog";
 import ParallaxImage from "@/components/notes/parallax-image";
 import Divider from "@/components/structure/divider";
 import NewsletterSubscribe from "@/components/structure/newsletter-subscribe";
+import SubscribeDialogWrapper from "@/components/subscribe-dialog-wrapper";
 import { cn } from "@/lib/utils";
 import { getNote } from "@/utils/fetch-mdx";
 import { titleFont } from "@/utils/fonts";
@@ -25,6 +26,7 @@ export default async function NotePage({
   return (
     <main className="p-5 md:p-6">
       <ImageDialog />
+      <SubscribeDialogWrapper />
       {/* {frontmatter.backgroundCoverImage && (
         <ParallaxImage
           src={frontmatter.backgroundCoverImage}
