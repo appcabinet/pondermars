@@ -59,7 +59,9 @@ export default function SubscribeDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className={cn("text-2xl", titleFont.className)}>Subscribe</DialogTitle>
+          <DialogTitle className={cn("text-2xl", titleFont.className)}>
+            Subscribe
+          </DialogTitle>
           <DialogDescription className="text-lg pb-1">
             I write about entrepreneurship, systems thinking, and philosophy.
           </DialogDescription>

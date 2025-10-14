@@ -23,3 +23,7 @@ Although this claim sounds quite rudimentary, I invite you to think about it fur
 In that scenario 5 years ago, what would you have asked it? What ideas would you want to bounce off it? What would you want to know? Furthermore, I doubt that asking it to return JSON would be high on the list of things you'd want it to do.
 
 Although AI-enabled applications are fantastic and saving us plenty time, we have apparently grown all too accustomed to accessible artificial intelligence. Aside from thinking about what it can do for you, consider the valuable insights you might gain by conversing with it. Your next revelation may be a few keystrokes away.
+
+Update: this tweet is a great example of what I mean:
+<https://x.com/kyleturman/status/1977406743778095227>
+

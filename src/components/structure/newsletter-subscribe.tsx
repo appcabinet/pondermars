@@ -67,7 +67,7 @@ export default function NewsletterSubscribe() {
             You&apos;re subscribed!
           </p>
           <div className="bg-green-500 rounded-full p-1 h-5 w-5 flex items-center justify-center">
-          <CheckIcon className="size-4 text-white" />
+            <CheckIcon className="size-4 text-white" />
           </div>
         </div>
       ) : (
