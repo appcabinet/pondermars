@@ -25,7 +25,7 @@ export default function ArticleHeader({
       </h1>
       <p className="text-lg opacity-60">
         {DateTime.fromISO(published).toLocaleString(DateTime.DATE_FULL)}
-        &nbsp;&nbsp;·&nbsp;&nbsp;
+        &nbsp;&nbsp;Â·&nbsp;&nbsp;
         {readingTime}
       </p>
     </div>
