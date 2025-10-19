@@ -12,9 +12,15 @@ export default function Music() {
       </Header>
 
       <p className={cn("text-lg leading-tight")}>
-        Software engineer, composer, and creative writer. Passionate about
-        crafting digital experiences others love. Currently the founder & CTO
-        of Maxed.
+        You can listen to all of my music&nbsp;
+        <a 
+          href="https://open.spotify.com/artist/5w22L9c15647459QBpzE8F" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="text-accent-foreground underline"
+        >
+          here
+        </a>
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

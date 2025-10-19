@@ -464,7 +464,7 @@ export const AudioScrubber = ({
       />
 
       <div
-        className="bg-primary/[0.07] pointer-events-none absolute inset-y-0 left-0"
+        className="bg-primary/[0.05] pointer-events-none absolute inset-y-0 left-0"
         style={{ width: `${localProgress * 100}%` }}
       />
 
