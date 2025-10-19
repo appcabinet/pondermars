@@ -41,7 +41,7 @@ export default async function NotePage({
         <div className="flex flex-col gap-12">
           <div />
           <Divider />
-          <NewsletterSubscribe />
+          <NewsletterSubscribe isArticle={true} />
           <div />
           <div />
           <div />

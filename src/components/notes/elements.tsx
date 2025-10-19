@@ -69,3 +69,7 @@ export const H3Element = (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     {props.children}
   </h3>
 );
+
+export const HRElement = (props: React.HTMLAttributes<HTMLHRElement>) => (
+  <hr className="!my-8" {...props} />
+);

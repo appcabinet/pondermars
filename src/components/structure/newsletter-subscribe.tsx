@@ -7,7 +7,7 @@ import { subscribeToNewsletter } from "@/app/actions/resend";
 import { Input } from "@/components/ui/input";
 import Header from "./header";
 
-export default function NewsletterSubscribe() {
+export default function NewsletterSubscribe({ isArticle = false }: { isArticle?: boolean }) {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -34,7 +34,7 @@ export default function NewsletterSubscribe() {
 
   return (
     <div className="flex flex-col gap-8">
-      <Header>Get Updates From Me</Header>
+      <Header>{isArticle ? "Thank you for reading!" : "Get Updates From Me"}</Header>
       <p className="text-lg pb-1">
         Get a short email every time I release a new article. You can also find
         me on&nbsp;

@@ -14,6 +14,7 @@ import {
   H1Element,
   H2Element,
   H3Element,
+  HRElement,
   ListElement,
   ParagraphElement,
   StrongElement,
@@ -60,6 +61,7 @@ export async function getNote(fileName: string) {
       h2: H2Element,
       h3: H3Element,
       blockquote: BlockQuoteElement,
+      hr: HRElement,
     },
   });
 
