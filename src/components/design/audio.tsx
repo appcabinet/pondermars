@@ -12,6 +12,7 @@ import {
   unregisterAudioRefs,
   updateAudioRefs,
 } from "@/atoms/audio-player";
+import { Progress } from "@/components/ui/progress";
 
 interface AudioProps {
   title: string;
@@ -58,6 +59,18 @@ export default function Audio({ title, url }: AudioProps) {
         // Set MediaStream for visualizer
         setMediaStream(destination.stream);
 
+        // Set up event listeners for progress tracking
+        audio.addEventListener('loadedmetadata', () => {
+          setDuration(audio.duration);
+        });
+
+        audio.addEventListener('timeupdate', () => {
+          setCurrentTime(audio.currentTime);
+        });
+
+        // Trigger loading of audio metadata
+        audio.load();
+
         // Update refs in Jotai store
         updateAudioRefs(url, {
           audioRef: audioRef.current,
@@ -96,50 +109,89 @@ export default function Audio({ title, url }: AudioProps) {
   }, [url]);
 
   const frequencyBands = useMultibandVolume(mediaStream, {
-    bands: 16,
+    bands: 20,
     loPass: 40,
-    hiPass: 1000,
-    updateInterval: 32,
+    hiPass: 700,
+    updateInterval: 50,
     analyserOptions: {
-      fftSize: 4096,
-      smoothingTimeConstant: 0.05,
+      fftSize: 2048,
+      smoothingTimeConstant: 0.2,
     },
   })
 
+  const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
+    const progressBar = e.currentTarget;
+    const rect = progressBar.getBoundingClientRect();
+    const clickPosition = e.clientX - rect.left;
+    const percentage = clickPosition / rect.width;
+    const newTime = percentage * duration;
+
+    if (audioRef.current && !isNaN(newTime)) {
+      audioRef.current.currentTime = newTime;
+      setCurrentTime(newTime);
+    }
+  };
+
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
+
   return (
     <div className="relative flex flex-col items-center gap-4 p-6 border">
-      <h3 className={cn("text-lg font-semibold w-full text-left", monoFont.className)}>{title}</h3>
-      <button
-        onClick={togglePlayPause}
-        disabled={isLoading}
-        className={cn(
-          "absolute top-4 right-4 p-2 border transition-colors hover:cursor-pointer",
-          "flex items-center justify-center",
-          "h-10 w-10",
-          isPlaying
-            ? "bg-accent-foreground text-white border-white/10"
-            : "bg-transparent hover:bg-gray-100",
-          "disabled:opacity-50 disabled:cursor-not-allowed"
-        )}
-      >
-        {isLoading ? (
-          <Play className="w-4 h-4" fill="currentColor" />
-        ) : isPlaying ? (
-          <Pause className="w-4 h-4" fill="currentColor" />
-        ) : (
-          <Play className="w-4 h-4" fill="currentColor" />
-        )}
-      </button>
+      <div className="flex items-center justify-between w-full">
+        <h3 className={cn("text-lg font-semibold w-full text-left", monoFont.className)}>{title}</h3>
+        <button
+          onClick={togglePlayPause}
+          disabled={isLoading}
+          className={cn(
+            "p-2 border transition-colors hover:cursor-pointer",
+            "flex items-center justify-center",
+            "h-10 w-10",
+            isPlaying
+              ? "bg-accent-foreground text-white border-white/10"
+              : "bg-card text-muted-foreground",
+            "disabled:opacity-50 disabled:cursor-not-allowed"
+          )}
+        >
+          {isLoading ? (
+            <Play className="w-4 h-4" fill="currentColor" />
+          ) : isPlaying ? (
+            <Pause className="w-4 h-4" fill="currentColor" />
+          ) : (
+            <Play className="w-4 h-4" fill="currentColor" />
+          )}
+        </button>
+      </div>
 
       <Matrix
         rows={12}
-        cols={16}
+        cols={20}
         mode="vu"
         levels={frequencyBands}
-        size={12}
+        size={20}
         gap={2}
         ariaLabel={`Audio frequency visualization for ${title}`}
       />
+
+      <div className="w-full flex items-center gap-3">
+        <div
+          onClick={handleSeek}
+          className={cn(
+            "flex-1 cursor-pointer",
+            isLoading && "pointer-events-none opacity-50"
+          )}
+        >
+          <Progress
+            value={duration > 0 ? (currentTime / duration) * 100 : 0}
+            className="h-1"
+          />
+        </div>
+        <span className={cn("text-sm tabular-nums min-w-[3rem] text-right", monoFont.className)}>
+          {formatTime(duration)}
+        </span>
+      </div>
     </div>
   );
 }
