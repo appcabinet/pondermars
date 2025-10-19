@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import Header from "../structure/header";
 import Audio from "./audio";
 
@@ -9,6 +10,12 @@ export default function Music() {
       <Header>
         Sound Engineering
       </Header>
+
+      <p className={cn("text-lg leading-tight")}>
+        Software engineer, composer, and creative writer. Passionate about
+        crafting digital experiences others love. Currently the founder & CTO
+        of Maxed.
+      </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <Audio

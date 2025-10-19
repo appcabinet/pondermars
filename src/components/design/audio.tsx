@@ -3,8 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Play, Pause } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useMultibandVolume } from "../ui/bar-visualizer";
-import { Matrix } from "../ui/matrix";
+import { AudioScrubber } from "../ui/waveform";
 import { monoFont } from "@/utils/fonts";
 import { useAudioPlayer } from "@/hooks/useAudioPlayer";
 import {
@@ -12,7 +11,6 @@ import {
   unregisterAudioRefs,
   updateAudioRefs,
 } from "@/atoms/audio-player";
-import { Progress } from "@/components/ui/progress";
 
 interface AudioProps {
   title: string;
@@ -21,14 +19,15 @@ interface AudioProps {
 
 export default function Audio({ title, url }: AudioProps) {
   const [isLoading, setIsLoading] = useState(true);
-  const [mediaStream, setMediaStream] = useState<MediaStream | null>(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [waveformData, setWaveformData] = useState<number[]>([]);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
   const sourceNodeRef = useRef<MediaElementAudioSourceNode | null>(null);
   const destinationRef = useRef<MediaStreamAudioDestinationNode | null>(null);
+  const analyserRef = useRef<AnalyserNode | null>(null);
 
   const { isPlaying, togglePlayPause } = useAudioPlayer(url);
 
@@ -52,16 +51,22 @@ export default function Audio({ title, url }: AudioProps) {
         const destination = audioContext.createMediaStreamDestination();
         destinationRef.current = destination;
 
-        // Connect: source -> destination -> speakers
+        // Create analyser for waveform data
+        const analyser = audioContext.createAnalyser();
+        analyser.fftSize = 2048;
+        analyser.smoothingTimeConstant = 0.8;
+        analyserRef.current = analyser;
+
+        // Connect: source -> analyser -> destination -> speakers
+        sourceNode.connect(analyser);
         sourceNode.connect(destination);
         sourceNode.connect(audioContext.destination);
-
-        // Set MediaStream for visualizer
-        setMediaStream(destination.stream);
 
         // Set up event listeners for progress tracking
         audio.addEventListener('loadedmetadata', () => {
           setDuration(audio.duration);
+          // Generate static waveform data
+          generateWaveformData();
         });
 
         audio.addEventListener('timeupdate', () => {
@@ -108,24 +113,49 @@ export default function Audio({ title, url }: AudioProps) {
     };
   }, [url]);
 
-  const frequencyBands = useMultibandVolume(mediaStream, {
-    bands: 16,
-    loPass: 40,
-    hiPass: 700,
-    updateInterval: 50,
-    analyserOptions: {
-      fftSize: 2048,
-      smoothingTimeConstant: 0.2,
-    },
-  })
+  const generateWaveformData = async () => {
+    try {
+      // Fetch the audio file
+      const response = await fetch(url);
+      const arrayBuffer = await response.arrayBuffer();
 
-  const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
-    const progressBar = e.currentTarget;
-    const rect = progressBar.getBoundingClientRect();
-    const clickPosition = e.clientX - rect.left;
-    const percentage = clickPosition / rect.width;
-    const newTime = percentage * duration;
+      // Create a temporary audio context for decoding
+      const tempContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const audioBuffer = await tempContext.decodeAudioData(arrayBuffer);
 
+      // Get the raw audio data from the first channel
+      const rawData = audioBuffer.getChannelData(0);
+      const bars = 100;
+      const blockSize = Math.floor(rawData.length / bars);
+      const data: number[] = [];
+
+      // Sample the audio data and calculate RMS (root mean square) for each bar
+      for (let i = 0; i < bars; i++) {
+        const start = blockSize * i;
+        let sum = 0;
+
+        for (let j = 0; j < blockSize; j++) {
+          const sample = rawData[start + j] || 0;
+          sum += sample * sample;
+        }
+
+        const rms = Math.sqrt(sum / blockSize);
+        // Normalize and scale to 0.15-0.95 range for better visibility
+        const normalized = Math.min(0.95, Math.max(0.15, rms * 2.5));
+        data.push(normalized);
+      }
+
+      setWaveformData(data);
+      tempContext.close();
+    } catch (error) {
+      console.error("Failed to generate waveform:", error);
+      // Fallback to random data if waveform generation fails
+      const fallbackData = Array.from({ length: 100 }, () => 0.3 + Math.random() * 0.4);
+      setWaveformData(fallbackData);
+    }
+  };
+
+  const handleSeek = (newTime: number) => {
     if (audioRef.current && !isNaN(newTime)) {
       audioRef.current.currentTime = newTime;
       setCurrentTime(newTime);
@@ -165,30 +195,22 @@ export default function Audio({ title, url }: AudioProps) {
         </button>
       </div>
 
-      <Matrix
-        rows={11}
-        cols={16}
-        mode="vu"
-        levels={frequencyBands}
-        size={15}
-        gap={2}
-        ariaLabel={`Audio frequency visualization for ${title}`}
+      <AudioScrubber
+        data={waveformData}
+        currentTime={currentTime}
+        duration={duration}
+        onSeek={handleSeek}
+        height={128}
+        barWidth={3}
+        barGap={1}
+        className="w-full"
       />
 
-      <div className="w-full flex items-center gap-4 pt-2">
-        <div
-          onClick={handleSeek}
-          className={cn(
-            "flex-1 cursor-pointer",
-            isLoading && "pointer-events-none opacity-50"
-          )}
-        >
-          <Progress
-            value={duration > 0 ? (currentTime / duration) * 100 : 0}
-            className="h-1"
-          />
-        </div>
-        <span className={cn("text-sm tabular-nums text-right", monoFont.className)}>
+      <div className="w-full flex items-center justify-between pt-2">
+        <span className={cn("text-sm tabular-nums", monoFont.className)}>
+          {formatTime(currentTime)}
+        </span>
+        <span className={cn("text-sm tabular-nums", monoFont.className)}>
           {formatTime(duration)}
         </span>
       </div>
