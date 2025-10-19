@@ -196,13 +196,14 @@ export default function Audio({ title, url }: AudioProps) {
       </div>
 
       <AudioScrubber
+        showHandle={false}
         data={waveformData}
         currentTime={currentTime}
         duration={duration}
         onSeek={handleSeek}
         height={128}
         barWidth={3}
-        barGap={1}
+        barGap={2}
         className="w-full"
       />
 
