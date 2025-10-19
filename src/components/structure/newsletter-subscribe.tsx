@@ -84,7 +84,7 @@ export default function NewsletterSubscribe({ isArticle = false }: { isArticle?:
           <button
             type="submit"
             disabled={isSubmitting}
-            className="h-9 px-4 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 disabled:opacity-50 disabled:pointer-events-none transition-colors"
+            className="h-9 px-4 rounded-md bg-primary text-primary-foreground text-base font-medium hover:bg-primary/90 disabled:opacity-50 disabled:pointer-events-none transition-colors"
           >
             Join
           </button>

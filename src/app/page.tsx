@@ -8,6 +8,7 @@ import NewsletterSubscribe from "@/components/structure/newsletter-subscribe";
 import { cn } from "@/lib/utils";
 import { getNotes } from "@/utils/fetch-mdx";
 import Music from "@/components/design/music";
+import SubscribeDialogWrapper from "@/components/subscribe-dialog-wrapper";
 
 export default async function Home() {
   const notes = await getNotes();
@@ -39,6 +40,7 @@ export default async function Home() {
       <Divider />
       <Music />
       <Divider />
+      <SubscribeDialogWrapper />
       <NewsletterSubscribe />
       <div />
       <div />
