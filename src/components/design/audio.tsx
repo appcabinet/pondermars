@@ -84,13 +84,13 @@ export default function Audio({ title, url }: AudioProps) {
   };
 
   const frequencyBands = useMultibandVolume(mediaStream, {
-    bands: 20,
-    loPass: 2,
-    hiPass: 400,
+    bands: 16,
+    loPass: 40,
+    hiPass: 1000,
     updateInterval: 32,
     analyserOptions: {
-      fftSize: 2048,
-      smoothingTimeConstant: 0.1,
+      fftSize: 4096,
+      smoothingTimeConstant: 0.05,
     },
   })
 
@@ -120,11 +120,11 @@ export default function Audio({ title, url }: AudioProps) {
       </button>
 
       <Matrix
-        rows={20}
-        cols={20}
+        rows={12}
+        cols={16}
         mode="vu"
         levels={frequencyBands}
-        size={10}
+        size={12}
         gap={2}
         ariaLabel={`Audio frequency visualization for ${title}`}
       />
