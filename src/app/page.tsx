@@ -7,6 +7,7 @@ import MainLayout from "@/components/structure/main-layout";
 import NewsletterSubscribe from "@/components/structure/newsletter-subscribe";
 import { cn } from "@/lib/utils";
 import { getNotes } from "@/utils/fetch-mdx";
+import Music from "@/components/design/music";
 
 export default async function Home() {
   const notes = await getNotes();
@@ -35,6 +36,8 @@ export default async function Home() {
       <FeaturedNote noteData={latestNote} />
       <Divider />
       <ArticleList notes={remainingNotes} />
+      <Divider />
+      <Music />
       <Divider />
       <NewsletterSubscribe />
       <div />
