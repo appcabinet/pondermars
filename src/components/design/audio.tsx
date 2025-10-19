@@ -109,7 +109,7 @@ export default function Audio({ title, url }: AudioProps) {
   }, [url]);
 
   const frequencyBands = useMultibandVolume(mediaStream, {
-    bands: 20,
+    bands: 16,
     loPass: 40,
     hiPass: 700,
     updateInterval: 50,
@@ -146,9 +146,9 @@ export default function Audio({ title, url }: AudioProps) {
           onClick={togglePlayPause}
           disabled={isLoading}
           className={cn(
-            "p-2 border transition-colors hover:cursor-pointer",
+            "border transition-colors hover:cursor-pointer",
             "flex items-center justify-center",
-            "h-10 w-10",
+            "h-10 w-10 shrink-0",
             isPlaying
               ? "bg-accent-foreground text-white border-white/10"
               : "bg-card text-muted-foreground",
@@ -166,16 +166,20 @@ export default function Audio({ title, url }: AudioProps) {
       </div>
 
       <Matrix
-        rows={12}
-        cols={20}
+        rows={11}
+        cols={16}
         mode="vu"
+        palette={{
+          on: "var(--accent-foreground)",
+          off: "var(--muted-foreground)"
+        }}
         levels={frequencyBands}
-        size={20}
+        size={15}
         gap={2}
         ariaLabel={`Audio frequency visualization for ${title}`}
       />
 
-      <div className="w-full flex items-center gap-3">
+      <div className="w-full flex items-center gap-4">
         <div
           onClick={handleSeek}
           className={cn(
@@ -188,7 +192,7 @@ export default function Audio({ title, url }: AudioProps) {
             className="h-1"
           />
         </div>
-        <span className={cn("text-sm tabular-nums min-w-[3rem] text-right", monoFont.className)}>
+        <span className={cn("text-sm tabular-nums text-right", monoFont.className)}>
           {formatTime(duration)}
         </span>
       </div>
