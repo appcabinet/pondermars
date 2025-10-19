@@ -6,6 +6,12 @@ import { cn } from "@/lib/utils";
 import { useMultibandVolume } from "../ui/bar-visualizer";
 import { Matrix } from "../ui/matrix";
 import { monoFont } from "@/utils/fonts";
+import { useAudioPlayer } from "@/hooks/useAudioPlayer";
+import {
+  registerAudioRefs,
+  unregisterAudioRefs,
+  updateAudioRefs,
+} from "@/atoms/audio-player";
 
 interface AudioProps {
   title: string;
@@ -14,13 +20,16 @@ interface AudioProps {
 
 export default function Audio({ title, url }: AudioProps) {
   const [isLoading, setIsLoading] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [mediaStream, setMediaStream] = useState<MediaStream | null>(null);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
   const sourceNodeRef = useRef<MediaElementAudioSourceNode | null>(null);
   const destinationRef = useRef<MediaStreamAudioDestinationNode | null>(null);
+
+  const { isPlaying, togglePlayPause } = useAudioPlayer(url);
 
   useEffect(() => {
     const initializeAudio = async () => {
@@ -49,6 +58,14 @@ export default function Audio({ title, url }: AudioProps) {
         // Set MediaStream for visualizer
         setMediaStream(destination.stream);
 
+        // Update refs in Jotai store
+        updateAudioRefs(url, {
+          audioRef: audioRef.current,
+          audioContextRef: audioContextRef.current,
+          sourceNodeRef: sourceNodeRef.current,
+          destinationRef: destinationRef.current,
+        });
+
         setIsLoading(false);
       } catch (error) {
         console.error("Failed to initialize audio:", error);
@@ -58,7 +75,6 @@ export default function Audio({ title, url }: AudioProps) {
 
     initializeAudio();
 
-    // Cleanup
     return () => {
       audioRef.current?.pause();
       sourceNodeRef.current?.disconnect();
@@ -66,22 +82,18 @@ export default function Audio({ title, url }: AudioProps) {
     };
   }, [url]);
 
-  const togglePlayPause = async () => {
-    if (!audioRef.current || !audioContextRef.current) return;
+  useEffect(() => {
+    registerAudioRefs(url, {
+      audioRef: audioRef.current,
+      audioContextRef: audioContextRef.current,
+      sourceNodeRef: sourceNodeRef.current,
+      destinationRef: destinationRef.current,
+    });
 
-    if (isPlaying) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      // Resume audio context if suspended
-      if (audioContextRef.current.state === "suspended") {
-        await audioContextRef.current.resume();
-      }
-
-      audioRef.current.play();
-      setIsPlaying(true);
-    }
-  };
+    return () => {
+      unregisterAudioRefs(url);
+    };
+  }, [url]);
 
   const frequencyBands = useMultibandVolume(mediaStream, {
     bands: 16,

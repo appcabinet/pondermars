@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import "./globals.css";
 import { ReactLenis } from "lenis/react";
 import { bodyFont } from "@/utils/fonts";
+import { Provider } from "jotai";
 
 export const metadata: Metadata = {
   title: "Marcelo Mantilla",
@@ -27,7 +28,7 @@ export default function RootLayout({
         }}
       />
       <body className={cn(bodyFont.className, "antialiased bg-background")}>
-        {children}
+        <Provider>{children}</Provider>
       </body>
     </html>
   );
