@@ -151,7 +151,7 @@ export default function Audio({ title, url }: AudioProps) {
             "h-10 w-10 shrink-0",
             isPlaying
               ? "bg-accent-foreground text-white border-white/10"
-              : "bg-card text-muted-foreground",
+              : "bg-transparent text-muted-foreground",
             "disabled:opacity-50 disabled:cursor-not-allowed"
           )}
         >
@@ -169,17 +169,13 @@ export default function Audio({ title, url }: AudioProps) {
         rows={11}
         cols={16}
         mode="vu"
-        palette={{
-          on: "var(--accent-foreground)",
-          off: "var(--muted-foreground)"
-        }}
         levels={frequencyBands}
         size={15}
         gap={2}
         ariaLabel={`Audio frequency visualization for ${title}`}
       />
 
-      <div className="w-full flex items-center gap-4">
+      <div className="w-full flex items-center gap-4 pt-2">
         <div
           onClick={handleSeek}
           className={cn(
