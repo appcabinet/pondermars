@@ -26,13 +26,14 @@ export default async function ArticleList({ notes }: { notes: NoteData[] }) {
                 {note.frontmatter.published}
               </td>
               <td className="text-lg hover:text-accent-foreground w-full">
-                <div className="flex items-center gap-0 min-w-0">
-                  <span className="sm:hidden pr-4 opacity-70 flex-shrink-0">
+                <div className="flex items-baseline gap-2 min-w-0 w-full">
+                  <span className="sm:hidden pr-2 opacity-70 flex-shrink-0">
                     •
                   </span>
-                  <Link href={`/${note.fileName}`} className="truncate">
+                  <Link href={`/${note.fileName}`} className="flex-shrink-0">
                     {note.frontmatter.title}
                   </Link>
+                  <span className="hidden sm:block flex-grow border-b border-dotted mb-1.5" />
                 </div>
               </td>
               <td
