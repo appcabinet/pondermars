@@ -27,10 +27,9 @@ export default async function Home() {
         </Link>
       </div>
       <div>
-        <p className={cn("text-lg leading-tight")}>
-          Software engineer, composer, and creative writer. Passionate about
-          crafting digital experiences others love. Currently the founder & CTO
-          of Maxed.
+        <p className={cn("text-lg")}>
+          Software engineer, musician, and creative writer. 
+          Currently the founder & CTO of Maxed.
         </p>
       </div>
       <Divider />
