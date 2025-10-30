@@ -13,10 +13,10 @@ export default function Music() {
 
       <p className={cn("text-lg leading-tight")}>
         You can listen to all of my music&nbsp;
-        <a 
-          href="https://open.spotify.com/artist/5w22L9c15647459QBpzE8F" 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href="https://open.spotify.com/artist/5w22L9c15647459QBpzE8F"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-accent-foreground underline"
         >
           here
@@ -37,10 +37,11 @@ export default function Music() {
           url="https://lhfsdw7dl5.ucarecd.net/e8783021-6ef9-433e-b8d8-5628da093d0e/PonderMarsBacteriumFinalMaster441k16bit.mp3"
         />
         <Audio
-          title="Mandoguan"
+          title="Earthquake"
           url="https://lhfsdw7dl5.ucarecd.net/e9eb796c-4e20-4250-bb2b-f6597871426e/PonderMarsMoneyTroubles.mp3"
         />
       </div>
     </div>
-  )
+  );
 }
+
